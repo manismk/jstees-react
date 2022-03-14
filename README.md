@@ -1,3 +1,3 @@
 # jstees-react
 
-A Ecom app for js and t-shirt lovers
+A Ecom app for js and tees lovers
