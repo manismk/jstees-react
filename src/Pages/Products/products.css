@@ -1,0 +1,120 @@
+/* Filter styles */
+
+.filter--section {
+  position: relative;
+  padding: 2.5rem 1.5rem;
+  max-width: 15rem;
+  position: fixed;
+  overflow-y: auto;
+  height: 95%;
+  top: 12vh;
+  bottom: 0;
+  transition: transform 0.5s ease;
+}
+
+.filter--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter--header .btn--clear {
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.heading--4 {
+  margin-bottom: 0.5rem;
+}
+
+/* main- container styles */
+.main--container {
+  margin: 2rem 2rem 2rem 14rem;
+}
+
+.input--primary input[type="radio"],
+.input--primary input[type="checkbox"] {
+  accent-color: var(--info-dark);
+}
+
+/* Filter Responsiveness */
+.filter--button {
+  position: fixed;
+  top: 25vh;
+  z-index: 10;
+  left: 0;
+  cursor: pointer;
+  background-color: var(--primary--light);
+  font-size: 1.25rem;
+  border: 1px solid var(--primary--color);
+  transform: translateX(-50rem);
+  transition: transform 0.5s ease;
+}
+
+.filter--close {
+  position: absolute;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  top: 0.5rem;
+  right: 1rem;
+  display: none;
+  padding: 2px;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media only screen and (max-width: 1100px) {
+  .grid--4--cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .grid--4--cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .filter--section {
+    transform: translateX(-50rem);
+  }
+
+  .open.filter--section {
+    transform: translateX(0rem);
+  }
+
+  .open .filter--close {
+    display: block;
+  }
+
+  .filter--section {
+    z-index: 10;
+    background-color: var(--primary--light);
+  }
+
+  .filter--button {
+    transform: translateX(0);
+  }
+  .main--container {
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .grid--4--cols {
+    grid-template-columns: 1fr;
+  }
+}
