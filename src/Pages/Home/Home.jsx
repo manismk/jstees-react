@@ -1,9 +1,11 @@
 import { Navbar } from "../../components/Navbar/Navbar";
-import fullSleeveTees from "../../assets/fullSleeveTees.jpg";
-import normalTees from "../../assets/normalTees.jpg";
-import pullOverHoodies from "../../assets/pullOverHoodies.jpg";
-import stencilHoodies from "../../assets/stencilHoodies.jpg";
-import bannerOptimized from "../../assets/bannerOptimized.jpg";
+import {
+  fullSleeveTees,
+  normalTees,
+  pullOverHoodies,
+  stencilHoodies,
+  bannerOptimized,
+} from "../../assets/index";
 import "../Home/home.css";
 
 import { Link } from "react-router-dom";
