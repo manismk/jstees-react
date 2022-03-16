@@ -1,0 +1,47 @@
+.container {
+  margin: 1rem auto;
+}
+
+.product--image--container {
+  position: relative;
+  margin: 1rem;
+}
+
+.product--content {
+  margin: 2rem 0;
+  align-self: start;
+}
+
+.product--header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--black);
+}
+
+.product--description {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--black);
+}
+
+.heading--4,
+.heading--5 {
+  padding-bottom: 0.3rem;
+}
+
+.product--description p,
+.product--description ul {
+  padding-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .product--content {
+    margin: 1rem;
+  }
+  .grid {
+    gap: 1rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .grid {
+    gap: 0;
+  }
+}
