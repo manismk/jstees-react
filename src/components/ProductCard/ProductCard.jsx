@@ -1,6 +1,10 @@
 import normalTees from "../../assets/normalTees.jpg";
 
-export const ProductCard = () => {
+const calculateDiscount = (actualPrice, discountedPrice) => {
+  return Math.round((1 - discountedPrice / actualPrice) * 100);
+};
+
+export const ProductCard = ({ product }) => {
   return (
     <>
       <div className="card card--badge">
@@ -11,19 +15,22 @@ export const ProductCard = () => {
           <img src={normalTees} alt="T-shirt" className="img--res" />
         </div>
         <div className="card--content">
-          <div className="card--title">Stylish Black Tees</div>
-          <div className="card--manufacturer">By Js fashion</div>
+          <div className="card--title">{product.title}</div>
+          <div className="card--manufacturer">By {product.make}</div>
           <div className="card--review--container">
             <div className="card--review--star">
-              4.2
+              {product.rating}
               <i className="fas fa-star" aria-hidden="true"></i>
             </div>
             <div className="card--review--number">(256)</div>
           </div>
           <div className="card--price--container">
-            <div className="actual--price">₹600</div>
-            <div className="strike--price">₹1200</div>
-            <div className="offer--percentage">(50%off)</div>
+            <div className="actual--price">₹{product.discountedPrice}</div>
+            <div className="strike--price">₹{product.actualPrice}</div>
+            <div className="offer--percentage">
+              ({calculateDiscount(product.actualPrice, product.discountedPrice)}
+              %off)
+            </div>
           </div>
         </div>
         <div className="card--btn">
