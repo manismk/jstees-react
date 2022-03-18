@@ -13,7 +13,7 @@ const ProductDataProvider = ({ children }) => {
       "normal-tees": false,
       "full-sleeve-tees": false,
       "pullover-hoodies": false,
-      "stencil-hoodies": false,
+      "crewneck-hoodies": false,
     },
     maxPrice: 1000,
     rating: "0",

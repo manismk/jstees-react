@@ -1,6 +1,5 @@
 import { Navbar } from "../../components/Navbar/Navbar";
 import "./singleProduct.css";
-import normalTees from "../../assets/normalTees.jpg";
 
 export const SingleProduct = () => {
   return (
@@ -9,7 +8,11 @@ export const SingleProduct = () => {
       <main>
         <section className="container grid grid--2--cols">
           <div className="product--image--container card--badge">
-            <img className="img--res" src={normalTees} alt="Normal Tees" />
+            <img
+              className="img--res"
+              src={process.env.PUBLIC_URL + "/assets/black-normal-tees.jpg"}
+              alt="Normal Tees"
+            />
             <button className="btn icon--btn icon--badge">
               <i className="fas fa-heart" aria-hidden="true"></i>
             </button>

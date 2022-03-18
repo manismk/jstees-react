@@ -1,5 +1,3 @@
-import normalTees from "../../assets/normalTees.jpg";
-
 const calculateDiscount = (actualPrice, discountedPrice) => {
   return Math.round((1 - discountedPrice / actualPrice) * 100);
 };
@@ -12,7 +10,11 @@ export const ProductCard = ({ product }) => {
           <i className="fas fa-heart" aria-hidden="true"></i>
         </button>
         <div className="card--img--container">
-          <img src={normalTees} alt="T-shirt" className="img--res" />
+          <img
+            src={process.env.PUBLIC_URL + product.imgSrc}
+            alt="T-shirt"
+            className="img--res"
+          />
         </div>
         <div className="card--content">
           <div className="card--title">{product.title}</div>

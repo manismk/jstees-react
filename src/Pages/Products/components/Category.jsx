@@ -38,10 +38,10 @@ export const Category = () => {
       />
       <InputCheckbox
         changeHandler={changeHandler}
-        id="stencilHoodies"
-        value="stencil-hoodies"
-        checkedState={state.category["stencil-hoodies"]}
-        labelName="Stencil Hoodies"
+        id="crewneckHoodies"
+        value="crewneck-hoodies"
+        checkedState={state.category["crewneck-hoodies"]}
+        labelName="Crewneck Hoodies"
       />
     </div>
   );

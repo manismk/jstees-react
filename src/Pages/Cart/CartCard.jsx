@@ -1,12 +1,10 @@
-import pullOverHoodies from "../../assets/pullOverHoodies.jpg";
-
 export const CartCard = () => {
   return (
     <>
       <div className="card card--horizontal">
         <div className="card--img--container">
           <img
-            src={pullOverHoodies}
+            src={process.env.PUBLIC_URL + "/assets/black-normal-tees.jpg"}
             alt="Man in Blue Suit"
             className="img--res"
           />

@@ -43,7 +43,7 @@
 /* Filter Responsiveness */
 .filter--button {
   position: fixed;
-  top: 25vh;
+  top: 18vh;
   z-index: 10;
   left: 0;
   cursor: pointer;
