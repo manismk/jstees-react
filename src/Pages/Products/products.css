@@ -75,6 +75,29 @@
   left: 0;
 }
 
+.slider {
+  background: linear-gradient(
+    to right,
+    var(--info-light) 0%,
+    var(--info-light) 100%,
+    var(--info-light) 100%,
+    var(--info-light) 100%
+  );
+  border-color: var(--info-dark);
+}
+
+.slider::-webkit-slider-thumb {
+  background: var(--info-dark);
+  box-shadow: 0px 0px 0px 0.15rem var(--info-light),
+    0px 0px 0px 0.3rem var(--info-dark);
+}
+
+.slider::-moz-slider-thumb {
+  background: var(--info-dark);
+  box-shadow: 0px 0px 0px 0.15rem var(--info-light),
+    0px 0px 0px 0.3rem var(--info-dark);
+}
+
 @media only screen and (max-width: 1100px) {
   .grid--4--cols {
     grid-template-columns: repeat(3, 1fr);
