@@ -1,5 +1,5 @@
 .user--container {
-  max-width: 15rem;
+  max-width: fit-content;
   padding: 2rem 1rem;
   background-color: var(--white);
   margin: 5rem auto;

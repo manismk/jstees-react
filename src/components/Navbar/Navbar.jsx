@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 import "../Navbar/Navbar.css";
 
 const Navbar = () => {
+  const { authData } = useAuth();
+
   return (
     <header className="nav--container">
       <div className="logo">
@@ -38,6 +41,13 @@ const Navbar = () => {
               <i className="fas fa-sign-in"></i>
             </Link>
           </li>
+          {authData.isLoggedIn && (
+            <li>
+              <Link to="/profile">
+                <i className="fas fa-user"></i>
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

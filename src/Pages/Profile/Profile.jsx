@@ -1,7 +1,10 @@
 import { Navbar } from "../../components/Navbar/Navbar";
+import { useAuth } from "../../context/auth-context";
 import "./profile.css";
 
 export const Profile = () => {
+  const { authData, handleLogout } = useAuth();
+
   return (
     <>
       <Navbar />
@@ -15,14 +18,25 @@ export const Profile = () => {
               className="avatar avatar--circle avatar--xl"
             />
           </div>
-          <p className="username">Username</p>
-          <div className="email--container">
-            <p className="email--label">Email</p>
-            <p className="email--content">test@test.in</p>
-          </div>
-          <div className="m-t-1 m-h-1">
-            <button className="btn btn--primary">Logout</button>
-          </div>
+
+          {authData.isLoggedIn ? (
+            <div>
+              <p className="username text--center">
+                {authData.userData.firstName}
+              </p>
+              <div className="email--container">
+                <p className="email--label">Email</p>
+                <p className="email--content">{authData.userData.email}</p>
+              </div>
+              <div className="m-t-1 m-h-1 text--center">
+                <button className="btn btn--primary" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            </div>
+          ) : (
+            "Not Logged In"
+          )}
         </div>
       </main>
     </>
