@@ -4,6 +4,9 @@ import { getPriceData } from "./getPriceData";
 import { getRatingData } from "./getRatingData";
 import { getSortedData } from "./getSortedData";
 import { handleFilterChange } from "./handleFilterChange";
+import { handleLoginValidation } from "./handleLoginValidation";
+import { handleSignUpValidation } from "./handleSignUpValidation";
+import { validateMail } from "./validateEmail";
 
 export {
   getCategoryData,
@@ -12,4 +15,7 @@ export {
   getRatingData,
   getSortedData,
   handleFilterChange,
+  validateMail,
+  handleSignUpValidation,
+  handleLoginValidation,
 };
