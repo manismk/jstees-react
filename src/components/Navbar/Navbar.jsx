@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
+import { useWishlist } from "../../context/wishlist-context";
 import "../Navbar/Navbar.css";
 
 const Navbar = () => {
   const { authData } = useAuth();
+  const { wishlist } = useWishlist();
 
   return (
     <header className="nav--container">
@@ -23,7 +25,14 @@ const Navbar = () => {
         <ul className="list list--space">
           <li>
             <Link to="/wishlist">
-              <i className="fas fa-heart"></i>
+              <div className="badge--container">
+                <i className="fas fa-heart"></i>
+                {authData.isLoggedIn && wishlist.length > 0 && (
+                  <span className="badge badge--top--right badge--secondary">
+                    {wishlist.length <= 9 ? wishlist.length : "9+"}
+                  </span>
+                )}
+              </div>
             </Link>
           </li>
           <li>

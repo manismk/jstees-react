@@ -9,6 +9,7 @@ import { Cart } from "./Pages/Cart/Cart";
 import { Profile } from "./Pages/Profile/Profile";
 import { SingleProduct } from "./Pages/SingleProduct/SingleProduct";
 import Mockman from "mockman-js";
+import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -19,9 +20,11 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
         <Route path="/single-product" element={<SingleProduct />} />
         <Route path="/mock" element={<Mockman />} />
       </Routes>

@@ -1,14 +1,29 @@
+import { useWishlist } from "../../context/wishlist-context";
+import { CloseButton } from "./components/CloseButton";
+import { WishListButton } from "./components/WishListButton";
+
 const calculateDiscount = (actualPrice, discountedPrice) => {
   return Math.round((1 - discountedPrice / actualPrice) * 100);
 };
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, wishListed }) => {
+  const { wishlist } = useWishlist();
+
+  if (
+    wishListed === undefined &&
+    wishlist.find((item) => item._id === product._id)
+  ) {
+    wishListed = true;
+  }
+
   return (
     <>
       <div className="card card--badge">
-        <button className="btn icon--btn icon--badge">
-          <i className="fas fa-heart" aria-hidden="true"></i>
-        </button>
+        {wishListed ? (
+          <CloseButton product={product} />
+        ) : (
+          <WishListButton product={product} />
+        )}
         <div className="card--img--container">
           <img
             src={process.env.PUBLIC_URL + product.imgSrc}
