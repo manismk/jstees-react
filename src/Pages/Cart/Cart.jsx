@@ -13,7 +13,7 @@ export const Cart = () => {
       <main className="container">
         <h1 className="heading--2 text--center m-t-2">My Cart</h1>
         {cartList.length ? (
-          <div className="grid grid--2--cols m-v-2">
+          <div className="grid grid--2--cols m-v-2 m-r-1">
             <div className="cart--container">
               {cartList.map((product) => {
                 return <CartCard product={product} key={product._id} />;
