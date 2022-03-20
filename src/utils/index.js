@@ -1,3 +1,5 @@
+import { calculateCartValue } from "./calculateCartValue";
+import { calculateDiscount } from "./calculateDiscount";
 import { getCategoryData } from "./getCategoryData";
 import { getNewCategoryObj } from "./getNewCategoryObj";
 import { getPriceData } from "./getPriceData";
@@ -18,4 +20,6 @@ export {
   validateMail,
   handleSignUpValidation,
   handleLoginValidation,
+  calculateDiscount,
+  calculateCartValue,
 };

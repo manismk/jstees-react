@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/auth-context";
-import { useWishlist } from "../../context/wishlist-context";
+import { useCart, useAuth, useWishlist } from "../../context";
 import "../Navbar/Navbar.css";
 
 const Navbar = () => {
   const { authData } = useAuth();
   const { wishlist } = useWishlist();
+  const { cartList } = useCart();
 
   return (
     <header className="nav--container">
@@ -39,9 +39,11 @@ const Navbar = () => {
             <Link to="/cart">
               <div className="badge--container">
                 <i className="fas fa-shopping-cart"></i>
-                <span className="badge badge--top--right badge--secondary">
-                  9
-                </span>
+                {authData.isLoggedIn && cartList.length > 0 && (
+                  <span className="badge badge--top--right badge--secondary">
+                    {cartList.length <= 9 ? cartList.length : "9+"}
+                  </span>
+                )}
               </div>
             </Link>
           </li>
