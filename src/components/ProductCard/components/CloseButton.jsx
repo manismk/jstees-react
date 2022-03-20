@@ -14,13 +14,9 @@ export const CloseButton = ({ product }) => {
       className="btn icon--btn icon--badge"
       disabled={isDisabled}
       onClick={() => {
-        if (!authData.isLoggedIn) {
-          navigate("/login");
-        }
-        if (authData.isLoggedIn) {
-          setDisabled((prev) => !prev);
-          handleDeleteWishlist(product);
-        }
+        authData.isLoggedIn
+          ? (setDisabled((prev) => !prev), handleDeleteWishlist(product))
+          : navigate("/login");
       }}
     >
       <i className="fas fa-close" aria-hidden="true"></i>

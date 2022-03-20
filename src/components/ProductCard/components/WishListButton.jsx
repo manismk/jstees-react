@@ -13,13 +13,9 @@ export const WishListButton = ({ product }) => {
       className="btn icon--btn icon--badge"
       disabled={isDisabled}
       onClick={() => {
-        if (!authData.isLoggedIn) {
-          navigate("/login");
-        }
-        if (authData.isLoggedIn) {
-          setDisabled((prev) => !prev);
-          handleAddWishlist(product);
-        }
+        authData.isLoggedIn
+          ? (setDisabled((prev) => !prev), handleAddWishlist(product))
+          : navigate("/login");
       }}
     >
       <i className="fas fa-heart" aria-hidden="true"></i>

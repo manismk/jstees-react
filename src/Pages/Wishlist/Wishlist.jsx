@@ -1,7 +1,6 @@
-import axios from "axios";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import { useWishlist } from "../../context/wishlist-context";
+import { useWishlist } from "../../context";
 import "../../index.css";
 
 export const Wishlist = () => {

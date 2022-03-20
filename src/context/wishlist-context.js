@@ -19,9 +19,12 @@ const WishlistProvider = ({ children }) => {
             setWishlist(data.wishlist);
           }
         } catch (e) {
-          console.log("Error in Getting Wishlist", e);
+          setWishlist([]);
+          console.error("Error in Getting Wishlist", e);
         }
       })();
+    } else {
+      setWishlist([]);
     }
   }, [authData.isLoggedIn]);
 
@@ -43,7 +46,7 @@ const WishlistProvider = ({ children }) => {
           }
         }
       } catch (e) {
-        console.log("Error in Adding wishlist", e);
+        console.error("Error in Adding wishlist", e);
       }
     })();
   };
@@ -60,7 +63,7 @@ const WishlistProvider = ({ children }) => {
           setWishlist(data.wishlist);
         }
       } catch (e) {
-        console.log("Error in Deleting wishlist", e);
+        console.error("Error in Deleting wishlist", e);
       }
     })();
   };
