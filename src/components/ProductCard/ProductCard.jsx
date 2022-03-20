@@ -1,10 +1,7 @@
-import { useWishlist } from "../../context/wishlist-context";
-import { CloseButton } from "./components/CloseButton";
-import { WishListButton } from "./components/WishListButton";
+import { useWishlist } from "../../context";
+import { calculateDiscount } from "../../utils";
 
-const calculateDiscount = (actualPrice, discountedPrice) => {
-  return Math.round((1 - discountedPrice / actualPrice) * 100);
-};
+import { WishListButton, CloseButton, CartButton } from "./components";
 
 export const ProductCard = ({ product, wishListed }) => {
   const { wishlist } = useWishlist();
@@ -51,7 +48,7 @@ export const ProductCard = ({ product, wishListed }) => {
           </div>
         </div>
         <div className="card--btn">
-          <button className="btn btn--primary w-100">Add to cart</button>
+          <CartButton product={product} />
         </div>
       </div>
     </>
