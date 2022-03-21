@@ -10,6 +10,7 @@
 .product--content {
   margin: 2rem 0;
   align-self: start;
+  margin-right: 2rem;
 }
 
 .product--header {
@@ -32,16 +33,21 @@
   padding-bottom: 0.5rem;
 }
 
+.single--prod--container.grid--2--cols {
+  grid-template-columns: 4fr 6fr;
+}
+
+.single--prod--container .btn--primary {
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 640px) {
   .product--content {
     margin: 1rem;
   }
-  .grid {
-    gap: 1rem;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .grid {
-    gap: 0;
+
+  .single--prod--container.grid--2--cols {
+    grid-template-columns: 1fr;
+    gap: 0rem;
   }
 }

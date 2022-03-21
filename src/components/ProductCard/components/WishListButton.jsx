@@ -12,7 +12,8 @@ export const WishListButton = ({ product }) => {
     <button
       className="btn icon--btn icon--badge"
       disabled={isDisabled}
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         authData.isLoggedIn
           ? (setDisabled((prev) => !prev), handleAddWishlist(product))
           : navigate("/login");

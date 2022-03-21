@@ -4,6 +4,7 @@ import { getCategoryData } from "./getCategoryData";
 import { getNewCategoryObj } from "./getNewCategoryObj";
 import { getPriceData } from "./getPriceData";
 import { getRatingData } from "./getRatingData";
+import { getSingleProduct } from "./getSingleProduct";
 import { getSortedData } from "./getSortedData";
 import { handleFilterChange } from "./handleFilterChange";
 import { handleLoginValidation } from "./handleLoginValidation";
@@ -22,4 +23,5 @@ export {
   handleLoginValidation,
   calculateDiscount,
   calculateCartValue,
+  getSingleProduct,
 };

@@ -26,7 +26,8 @@ export const CartButton = ({ product }) => {
           ? "btn--disabled"
           : ""
       }`}
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         if (authData.isLoggedIn) {
           buttonText === "Add to cart"
             ? (setButtonText("Adding"), handleCartAddition(product))
