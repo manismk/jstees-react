@@ -13,7 +13,8 @@ export const CloseButton = ({ product }) => {
     <button
       className="btn icon--btn icon--badge"
       disabled={isDisabled}
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         authData.isLoggedIn
           ? (setDisabled((prev) => !prev), handleDeleteWishlist(product))
           : navigate("/login");

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../../context";
 import { calculateDiscount } from "../../utils";
 
@@ -5,6 +6,7 @@ import { WishListButton, CloseButton, CartButton } from "./components";
 
 export const ProductCard = ({ product, wishListed }) => {
   const { wishlist } = useWishlist();
+  const navigate = useNavigate();
 
   if (
     wishListed === undefined &&
@@ -15,7 +17,12 @@ export const ProductCard = ({ product, wishListed }) => {
 
   return (
     <>
-      <div className="card card--badge">
+      <div
+        className="card card--badge"
+        onClick={() => {
+          navigate(`/products/${product._id}`);
+        }}
+      >
         {wishListed ? (
           <CloseButton product={product} />
         ) : (
