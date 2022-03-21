@@ -80,11 +80,16 @@ input[type="checkbox"] + label {
   left: 0;
 }
 
+/* Slider */
+
+.range {
+  margin-top: 2rem;
+}
 .slider {
   background: linear-gradient(
     to right,
-    var(--info-light) 0%,
-    var(--info-light) 100%,
+    var(--info-dark) 0%,
+    var(--info-dark) 100%,
     var(--info-light) 100%,
     var(--info-light) 100%
   );
@@ -101,6 +106,47 @@ input[type="checkbox"] + label {
   background: var(--info-dark);
   box-shadow: 0px 0px 0px 0.15rem var(--info-light),
     0px 0px 0px 0.3rem var(--info-dark);
+}
+
+.range .sliderValue {
+  position: relative;
+  width: 100%;
+}
+.range .sliderValue span {
+  position: absolute;
+  color: var(--white);
+  height: 2rem;
+  width: 2rem;
+  font-size: 0.6rem;
+  top: -2.5rem;
+  left: 97%;
+  font-weight: 600;
+  line-height: 2rem;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.range .sliderValue span::after {
+  position: absolute;
+  content: "";
+  height: 2rem;
+  width: 2rem;
+  background-color: var(--info-dark);
+  transform: translateX(-50%) rotate(45deg);
+  left: 50%;
+  z-index: -1;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.sliderLabels {
+  margin-top: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.sliderLabels span {
+  font-size: 0.8rem;
 }
 
 @media only screen and (max-width: 1100px) {

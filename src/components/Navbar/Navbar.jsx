@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useCart, useAuth, useWishlist } from "../../context";
 import "../Navbar/Navbar.css";
 
@@ -6,23 +6,35 @@ const Navbar = () => {
   const { authData } = useAuth();
   const { wishlist } = useWishlist();
   const { cartList } = useCart();
+  const location = useLocation();
+  const authPages =
+    location.pathname === "/login" ||
+    location.pathname === "/signUp" ||
+    location.pathname === "/forgotPassword";
 
   return (
     <header className="nav--container">
       <div className="logo">
-        <Link to="/">JsTees</Link>
+        <Link to="/">Js Tees</Link>
       </div>
-      <div className="header--input--container">
-        <input
-          className="header--input"
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search"
-        />
-      </div>
+      {!authPages && (
+        <div className="header--input--container">
+          <input
+            className="header--input"
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search"
+          />
+        </div>
+      )}
       <nav className="nav--items">
         <ul className="list list--space">
+          <li>
+            <Link to="/products">
+              <i className="fas fa-store"></i>
+            </Link>
+          </li>
           <li>
             <Link to="/wishlist">
               <div className="badge--container">
@@ -47,15 +59,17 @@ const Navbar = () => {
               </div>
             </Link>
           </li>
-          <li>
-            <Link to="/Login">
-              <i className="fas fa-sign-in"></i>
-            </Link>
-          </li>
-          {authData.isLoggedIn && (
+
+          {authData.isLoggedIn ? (
             <li>
               <Link to="/profile">
                 <i className="fas fa-user"></i>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login">
+                <i className="fas fa-sign-in"></i>
               </Link>
             </li>
           )}

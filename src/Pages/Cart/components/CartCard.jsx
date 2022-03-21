@@ -27,7 +27,7 @@ export const CartCard = ({ product }) => {
             <div className="card--review--container">
               <div className="card--review--star">
                 {product.rating}
-                <i className="far fa-star" aria-hidden="true"></i>
+                <i className="fas fa-star" aria-hidden="true"></i>
               </div>
               <div className="card--review--number">(256)</div>
             </div>
