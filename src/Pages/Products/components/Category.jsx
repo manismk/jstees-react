@@ -1,8 +1,28 @@
 import { InputCheckbox } from "../../../components/Input/InputCheckbox";
 import { useProductData } from "../../../context/product-data-context";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Category = () => {
   const { state, dispatch } = useProductData();
+  const params = useParams();
+
+  useEffect(() => {
+    dispatch({
+      type: "CLEAR_ALL",
+    });
+
+    if (params.categoryName !== undefined && state.data.length) {
+      Object.keys(state.category).map((category) => {
+        if (category === params.categoryName) {
+          dispatch({
+            type: "CATEGORY_CHANGE",
+            payload: category,
+          });
+        }
+      });
+    }
+  }, [params]);
 
   const changeHandler = (e) => {
     dispatch({

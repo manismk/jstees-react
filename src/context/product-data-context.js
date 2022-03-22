@@ -17,12 +17,15 @@ const ProductDataProvider = ({ children }) => {
     },
     maxPrice: 1000,
     rating: "0",
+    categories: [],
   });
 
   useEffect(async () => {
     try {
       const { data } = await axios.get("/api/products");
       dispatch({ type: "LOAD_INITIAL_DATA", payload: data.products });
+      const res = await axios.get("/api/categories");
+      dispatch({ type: "LOAD_INITIAL_CATEGORY", payload: res.data.categories });
     } catch (e) {
       console.log("Error in getting initial data", e);
     }

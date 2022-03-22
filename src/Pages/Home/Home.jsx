@@ -3,8 +3,12 @@ import { bannerOptimized } from "../../assets/index";
 import "../Home/home.css";
 
 import { Link } from "react-router-dom";
+import { useProductData } from "../../context";
+import { CategoryCard } from "./components/CategoryCard";
 
 export const Home = () => {
+  const { state } = useProductData();
+
   return (
     <>
       <Navbar />
@@ -21,45 +25,11 @@ export const Home = () => {
           </div>
           <h2 className="heading--3 text--center m-b-2">Tees Category</h2>
           <div className="category--container grid grid--4--cols m-b-2">
-            <div className="category--image">
-              <img
-                className="img--res"
-                src={process.env.PUBLIC_URL + "/assets/black-normal-tees.jpg"}
-                alt=""
-              />
-              <p className="category--name">Normal Tees</p>
-            </div>
-            <div className="category--image">
-              <img
-                className="img--res"
-                src={
-                  process.env.PUBLIC_URL + "/assets/black-full-sleeve-tees.jpg"
-                }
-                alt=""
-              />
-              <p className="category--name">Full Sleeve Tees</p>
-            </div>
-
-            <div className="category--image">
-              <img
-                className="img--res"
-                src={
-                  process.env.PUBLIC_URL + "/assets/black-pullover-hoodies.jpg"
-                }
-                alt=""
-              />
-              <p className="category--name">Pullover Hoodie</p>
-            </div>
-            <div className="category--image">
-              <img
-                className="img--res"
-                src={
-                  process.env.PUBLIC_URL + "/assets/black-crewneck-hoodies.jpg"
-                }
-                alt=""
-              />
-              <p className="category--name">Crewneck Hoodie</p>
-            </div>
+            {state.categories.length
+              ? state.categories.map((category) => (
+                  <CategoryCard category={category} key={category._id} />
+                ))
+              : "Loading..."}
           </div>
           <div className="action--container m-b-2 m-h-2">
             <Link
