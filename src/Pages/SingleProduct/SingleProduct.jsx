@@ -27,7 +27,7 @@ export const SingleProduct = () => {
       const product = await getSingleProduct(params.productId);
       setData((prev) => ({ ...prev, product: product }));
     })();
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     cartList.find((item) => item._id === data.product._id)

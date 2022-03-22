@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useCart, useAuth, useWishlist } from "../../context";
 import "../Navbar/Navbar.css";
+import { Search } from "./components/Search";
 
 const Navbar = () => {
   const { authData } = useAuth();
@@ -17,17 +18,7 @@ const Navbar = () => {
       <div className="logo">
         <Link to="/">Js Tees</Link>
       </div>
-      {!authPages && (
-        <div className="header--input--container">
-          <input
-            className="header--input"
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search"
-          />
-        </div>
-      )}
+      {!authPages ? <Search /> : <p></p>}
       <nav className="nav--items">
         <ul className="list list--space">
           <li>
