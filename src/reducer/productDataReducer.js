@@ -12,6 +12,9 @@ export const productDataReducer = (state, action) => {
       allProductData = action.payload;
       return { ...state, data: action.payload };
 
+    case "LOAD_INITIAL_CATEGORY":
+      return { ...state, categories: action.payload };
+
     case "HIGH_TO_LOW":
       return {
         ...state,
@@ -31,6 +34,7 @@ export const productDataReducer = (state, action) => {
         rating: action.payload,
         data: handleFilterChange(allProductData, state, action),
       };
+
     case "CATEGORY_CHANGE":
       return {
         ...state,
@@ -44,6 +48,7 @@ export const productDataReducer = (state, action) => {
         maxPrice: action.payload,
         data: handleFilterChange(allProductData, state, action),
       };
+
     case "CLEAR_ALL":
       return {
         ...state,
