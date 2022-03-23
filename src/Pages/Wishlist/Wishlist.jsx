@@ -11,17 +11,21 @@ export const Wishlist = () => {
       <Navbar />
       <main className="container">
         <h1 className="heading--2 text--center m-t-2">My wishlist</h1>
-        <div className="grid grid--4--cols m-v-2">
-          {wishlist.length
-            ? wishlist.map((product) => (
-                <ProductCard
-                  product={product}
-                  key={product._id}
-                  wishListed={true}
-                />
-              ))
-            : "No items wishlisted"}
-        </div>
+        {wishlist.length ? (
+          <div className="grid grid--4--cols m-v-2">
+            {wishlist.map((product) => (
+              <ProductCard
+                product={product}
+                key={product._id}
+                wishListed={true}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="result--text text--center m-v-2">
+            No Items Wiishlisted
+          </p>
+        )}
       </main>
     </>
   );

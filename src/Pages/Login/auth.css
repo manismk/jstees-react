@@ -22,4 +22,7 @@
   .login--container {
     margin: 2rem;
   }
+  .remember--container {
+    flex-direction: column;
+  }
 }

@@ -56,6 +56,7 @@ input[type="number"] {
   padding: 2rem 4rem;
   border-radius: 5px;
   box-shadow: 2px 3px 10px 0px rgb(0 0 0 / 20%);
+  margin-right: 1rem;
 }
 
 .price--sub--container {
@@ -79,13 +80,21 @@ input[type="number"] {
   }
   .price--container {
     width: 90%;
-    margin: 0 4rem;
+    margin: 0 3rem;
     padding: 2rem;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  html {
-    font-size: 80%;
+  .card {
+    max-width: 18rem;
+  }
+  .card--horizontal {
+    flex-direction: column;
+  }
+
+  .card--content--btn--container,
+  .card--horizontal .card--img--container {
+    width: 100%;
   }
 }

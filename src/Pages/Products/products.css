@@ -48,8 +48,8 @@ input[type="checkbox"] + label {
 /* Filter Responsiveness */
 .filter--button {
   position: fixed;
-  top: 18vh;
-  z-index: 10;
+  top: 25vh;
+  z-index: 6;
   left: 0;
   cursor: pointer;
   background-color: var(--primary--light);
@@ -149,6 +149,11 @@ input[type="checkbox"] + label {
   font-size: 0.8rem;
 }
 
+.result--text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 1100px) {
   .grid--4--cols {
     grid-template-columns: repeat(3, 1fr);
@@ -162,10 +167,6 @@ input[type="checkbox"] + label {
 }
 
 @media only screen and (max-width: 760px) {
-  .filter--section {
-    transform: translateX(-50rem);
-  }
-
   .open.filter--section {
     transform: translateX(0rem);
   }
@@ -175,6 +176,8 @@ input[type="checkbox"] + label {
   }
 
   .filter--section {
+    top: 20vh;
+    transform: translateX(-50rem);
     z-index: 10;
     background-color: var(--primary--light);
   }
@@ -183,7 +186,7 @@ input[type="checkbox"] + label {
     transform: translateX(0);
   }
   .main--container {
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
 }
 

@@ -10,6 +10,10 @@ export const CartCard = ({ product }) => {
     wishListed = true;
   }
 
+  if (product.qty < 1) {
+    handleCartDeletion(product);
+  }
+
   return (
     <>
       <div className="card card--horizontal">
