@@ -5,9 +5,10 @@ import "../Home/home.css";
 import { Link } from "react-router-dom";
 import { useProductData } from "../../context";
 import { CategoryCard } from "./components/CategoryCard";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Home = () => {
-  const { state } = useProductData();
+  const { state, productLoading } = useProductData();
 
   return (
     <>
@@ -41,6 +42,7 @@ export const Home = () => {
           </div>
         </div>
       </main>
+      {productLoading && <Loader />}
     </>
   );
 };

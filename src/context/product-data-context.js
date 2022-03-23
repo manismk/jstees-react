@@ -1,5 +1,11 @@
 import axios from "axios";
-import { createContext, useContext, useReducer, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 
 import { productDataReducer } from "../reducer/productDataReducer";
 
@@ -20,20 +26,23 @@ const ProductDataProvider = ({ children }) => {
     categories: [],
     searchData: [],
   });
+  const [productLoading, setProductLoading] = useState(false);
 
   useEffect(async () => {
     try {
+      setProductLoading(true);
       const { data } = await axios.get("/api/products");
       dispatch({ type: "LOAD_INITIAL_DATA", payload: data.products });
       const res = await axios.get("/api/categories");
       dispatch({ type: "LOAD_INITIAL_CATEGORY", payload: res.data.categories });
+      setProductLoading(false);
     } catch (e) {
       console.log("Error in getting initial data", e);
     }
   }, []);
 
   return (
-    <ProductDataContext.Provider value={{ state, dispatch }}>
+    <ProductDataContext.Provider value={{ state, dispatch, productLoading }}>
       {children}
     </ProductDataContext.Provider>
   );

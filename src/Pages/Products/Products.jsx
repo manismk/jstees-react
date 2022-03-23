@@ -3,13 +3,15 @@ import { Filters } from "./components/Filters";
 import "../Products/products.css";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useProductData } from "../../context/product-data-context";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Products = () => {
-  const { state } = useProductData();
+  const { state, productLoading } = useProductData();
 
   return (
     <>
       <Navbar />
+      {productLoading && <Loader />}
       <main>
         <h1 className="heading--2 text--center m-t-2">Featured Products</h1>
         <Filters />

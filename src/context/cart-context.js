@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useAuth } from "./auth-context";
 
 const { createContext, useContext, useState, useEffect } = require("react");
@@ -22,6 +23,9 @@ const CartProvider = ({ children }) => {
         } catch (e) {
           setCartList([]);
           console.error("Error in Getting Cart data while the user changes", e);
+          toast.error("User not found.Try logging in again", {
+            autoClose: false,
+          });
         }
       })();
     } else {
@@ -44,10 +48,12 @@ const CartProvider = ({ children }) => {
           );
           if (status === 201) {
             setCartList(data.cart);
+            toast.success("Added to cart");
           }
         }
       } catch (e) {
         console.error("Error in Adding item in cart", e);
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };
@@ -64,9 +70,11 @@ const CartProvider = ({ children }) => {
 
         if (status === 200) {
           setCartList(data.cart);
+          toast.error("Removed from cart");
         }
       } catch (e) {
         console.error("Error in Deleting cart Item", e);
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };

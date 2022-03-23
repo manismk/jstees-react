@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { useAuth } from "./auth-context";
 
 const WishlistContext = createContext();
@@ -21,6 +22,9 @@ const WishlistProvider = ({ children }) => {
         } catch (e) {
           setWishlist([]);
           console.error("Error in Getting Wishlist", e);
+          toast.error("User not found. Try logging in again", {
+            autoClose: false,
+          });
         }
       })();
     } else {
@@ -43,10 +47,12 @@ const WishlistProvider = ({ children }) => {
           );
           if (status === 201) {
             setWishlist(data.wishlist);
+            toast.success("Added to wishlist");
           }
         }
       } catch (e) {
         console.error("Error in Adding wishlist", e);
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };
@@ -61,9 +67,11 @@ const WishlistProvider = ({ children }) => {
         );
         if (status === 200) {
           setWishlist(data.wishlist);
+          toast.error("Removed from the Wishlist");
         }
       } catch (e) {
         console.error("Error in Deleting wishlist", e);
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };
