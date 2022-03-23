@@ -18,6 +18,7 @@ const ProductDataProvider = ({ children }) => {
     maxPrice: 1000,
     rating: "0",
     categories: [],
+    searchData: [],
   });
 
   useEffect(async () => {

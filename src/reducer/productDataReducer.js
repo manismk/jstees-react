@@ -2,6 +2,7 @@ import {
   getNewCategoryObj,
   getSortedData,
   handleFilterChange,
+  handleSearch,
 } from "../utils/index";
 
 let allProductData = [];
@@ -48,6 +49,9 @@ export const productDataReducer = (state, action) => {
         maxPrice: action.payload,
         data: handleFilterChange(allProductData, state, action),
       };
+
+    case "SEARCH_PRODUCTS":
+      return { ...state, searchData: handleSearch(allProductData, action) };
 
     case "CLEAR_ALL":
       return {

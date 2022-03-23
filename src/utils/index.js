@@ -8,6 +8,7 @@ import { getSingleProduct } from "./getSingleProduct";
 import { getSortedData } from "./getSortedData";
 import { handleFilterChange } from "./handleFilterChange";
 import { handleLoginValidation } from "./handleLoginValidation";
+import { handleSearch } from "./handleSearch";
 import { handleSignUpValidation } from "./handleSignUpValidation";
 import { validateMail } from "./validateEmail";
 
@@ -24,4 +25,5 @@ export {
   calculateDiscount,
   calculateCartValue,
   getSingleProduct,
+  handleSearch,
 };
