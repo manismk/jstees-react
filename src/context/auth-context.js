@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const getInitialData = () => {
   const userLocalData = JSON.parse(localStorage.getItem("jsUser"));
@@ -15,10 +16,6 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   let navigate = useNavigate();
   const [authData, setAuthData] = useState(getInitialData());
-  const [message, setMessage] = useState({
-    loginMessage: "",
-    signupMessage: "",
-  });
 
   const handleLogin = (userMail, password) => {
     (async () => {
@@ -35,20 +32,17 @@ const AuthProvider = ({ children }) => {
             isLoggedIn: true,
             userData: data.foundUser,
           }));
-          setMessage((prev) => ({ ...prev, loginMessage: "" }));
+          toast.success("Login Successful");
           navigate("/products");
         }
         if (status === 201) {
           setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
-          setMessage((prev) => ({ ...prev, loginMessage: "Wrong Password" }));
+          toast.error("Wrong password.Try again");
         }
       } catch (e) {
         setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
         console.log("Error in Login", e);
-        setMessage((prev) => ({
-          ...prev,
-          loginMessage: "Something went wrong",
-        }));
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };
@@ -69,16 +63,13 @@ const AuthProvider = ({ children }) => {
             isLoggedIn: true,
             userData: data.createdUser,
           }));
-          setMessage((prev) => ({ ...prev, signupMessage: "" }));
           navigate("/products");
+          toast.success("User created successfully");
         }
       } catch (e) {
         setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
         console.log("Error in signup", e);
-        setMessage((prev) => ({
-          ...prev,
-          signupMessage: "Something went wrong",
-        }));
+        toast.error("Something Went wrong", { autoClose: false });
       }
     })();
   };
@@ -95,7 +86,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authData, handleLogin, message, handleSignUp, handleLogout }}
+      value={{ authData, handleLogin, handleSignUp, handleLogout }}
     >
       {children}
     </AuthContext.Provider>

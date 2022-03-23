@@ -13,6 +13,8 @@ import {
 
 import Mockman from "mockman-js";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -33,6 +35,13 @@ function App() {
         </Route>
         <Route path="/mock" element={<Mockman />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={800}
+        newestOnTop={true}
+        limit={2}
+        style={{ top: "5rem" }}
+      />
     </div>
   );
 }

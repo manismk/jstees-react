@@ -13,7 +13,7 @@ const Login = () => {
     passwordError: "",
   });
 
-  const { message, handleLogin } = useAuth();
+  const { handleLogin } = useAuth();
 
   const loginHandler = () => {
     const { mailError, passwordError } = handleLoginValidation(
@@ -100,7 +100,6 @@ const Login = () => {
               Forgot Your password
             </Link>
           </div>
-          <p className="text--center m-v-1">{message.loginMessage}</p>
           <div className="m-t-1 m-h-1">
             <button
               className="btn btn--primary w-100"

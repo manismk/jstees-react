@@ -9,6 +9,7 @@ import {
   WishListButton,
 } from "../../components/ProductCard/components";
 import { useCart, useWishlist } from "../../context";
+import { Loader } from "../../components/Loader/Loader";
 
 export const SingleProduct = () => {
   const params = useParams();
@@ -20,12 +21,14 @@ export const SingleProduct = () => {
     product: {},
     cartListed: false,
     wishListed: false,
+    isLoading: false,
   });
 
   useEffect(() => {
+    setData((prev) => ({ ...prev, isLoading: true }));
     (async () => {
       const product = await getSingleProduct(params.productId);
-      setData((prev) => ({ ...prev, product: product }));
+      setData((prev) => ({ ...prev, product: product, isLoading: false }));
     })();
   }, [params]);
 
@@ -42,9 +45,7 @@ export const SingleProduct = () => {
     <>
       <Navbar />
       <main>
-        {data.product === {} ? (
-          "Loading..."
-        ) : data.product === null ? (
+        {data.product === null ? (
           "Error"
         ) : (
           <section className="container grid grid--2--cols single--prod--container">
@@ -125,6 +126,7 @@ export const SingleProduct = () => {
           </section>
         )}
       </main>
+      {data.isLoading && <Loader />}
     </>
   );
 };

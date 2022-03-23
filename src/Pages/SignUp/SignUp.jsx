@@ -13,7 +13,7 @@ export const SignUp = () => {
     mailError: "",
     passwordError: "",
   });
-  const { message, handleSignUp } = useAuth();
+  const { handleSignUp } = useAuth();
 
   const signUpHandler = () => {
     const { nameError, mailError, passwordError } = handleSignUpValidation(
@@ -126,7 +126,6 @@ export const SignUp = () => {
               <label htmlFor="remember">Accept to terms & conditions</label>
             </span>
           </div>
-          <p className="text--center m-v-1">{message.signupMessage}</p>
           <div className="m-t-1 m-h-1">
             <button
               className="btn btn--primary w-100"
