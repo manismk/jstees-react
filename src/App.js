@@ -15,18 +15,18 @@ import Mockman from "mockman-js";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/products" element={<Products />}>
-          <Route path=":categoryName" element={<Products />} />
-        </Route>
+        <Route path="/products" element={<Products />} />
         <Route path="/products/single/:productId" element={<SingleProduct />} />
         <Route element={<PrivateRoute />}>
           <Route path="/wishlist" element={<Wishlist />} />

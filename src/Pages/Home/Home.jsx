@@ -1,4 +1,3 @@
-import { Navbar } from "../../components/Navbar/Navbar";
 import { bannerOptimized } from "../../assets/index";
 import "../Home/home.css";
 
@@ -12,7 +11,6 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
       <main>
         <div className="container">
           <div className="banner">

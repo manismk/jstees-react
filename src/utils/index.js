@@ -11,6 +11,7 @@ import { handleLoginValidation } from "./handleLoginValidation";
 import { handleSearch } from "./handleSearch";
 import { handleSignUpValidation } from "./handleSignUpValidation";
 import { validateMail } from "./validateEmail";
+import { validatePassword } from "./validatePassword";
 
 export {
   getCategoryData,
@@ -26,4 +27,5 @@ export {
   calculateCartValue,
   getSingleProduct,
   handleSearch,
+  validatePassword,
 };

@@ -1,124 +1,150 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { useAuth } from "../../context/auth-context";
 import { handleSignUpValidation } from "../../utils";
+import { InputPassword, InputTextBox } from "../../components/Input";
 
 export const SignUp = () => {
   const [userData, setUserData] = useState({
-    userName: "",
+    firstName: "",
+    lastName: "",
     userMail: "",
     password: "",
-    nameError: "",
+    firstNameError: "",
+    lastNameError: "",
     mailError: "",
     passwordError: "",
+    confirmPassword: "",
+    confirmPasswordError: "",
   });
   const { handleSignUp } = useAuth();
 
   const signUpHandler = () => {
-    const { nameError, mailError, passwordError } = handleSignUpValidation(
-      userData.userName,
+    const {
+      firstNameError,
+      lastNameError,
+      mailError,
+      passwordError,
+      confirmPasswordError,
+    } = handleSignUpValidation(
+      userData.firstName,
+      userData.lastName,
       userData.userMail,
-      userData.password
+      userData.password,
+      userData.confirmPassword
     );
 
-    if (mailError.length || passwordError.length || nameError.length) {
+    if (
+      mailError.length ||
+      passwordError.length ||
+      lastNameError.length ||
+      firstNameError.length ||
+      confirmPasswordError.length
+    ) {
       setUserData((prevData) => ({
         ...prevData,
         mailError: mailError,
         passwordError: passwordError,
-        nameError: nameError,
+        firstNameError: firstNameError,
+        lastNameError: lastNameError,
+        confirmPasswordError: confirmPasswordError,
       }));
     }
     if (
       mailError.length === 0 &&
       passwordError.length === 0 &&
-      nameError.length === 0
+      firstNameError.length === 0 &&
+      lastNameError.length === 0 &&
+      confirmPasswordError.length === 0
     ) {
-      handleSignUp(userData.userName, userData.userMail, userData.password);
+      handleSignUp(
+        userData.firstName,
+        userData.lastName,
+        userData.userMail,
+        userData.password
+      );
     }
   };
 
   return (
     <>
-      <Navbar />
       <main>
         <div className="login--container">
           <h1 className="heading--3 text--center">Sign Up</h1>
-          <div
-            className={`input--container input--${
-              userData.nameError.length ? "error" : "standard"
-            } m-t-2`}
-          >
-            <label htmlFor="name" className="input--label">
-              Full Name
-            </label>
-            <input
-              type="name"
-              id="name"
-              className="input"
-              placeholder="John"
-              value={userData.userName}
-              onChange={(e) => {
+          <div className="signup--name--container">
+            <InputTextBox
+              error={userData.firstNameError}
+              labelName="First Name"
+              id="firstName"
+              changeHandler={(e) => {
                 setUserData((prevData) => ({
                   ...prevData,
-                  userName: e.target.value,
-                  nameError: "",
+                  firstName: e.target.value,
+                  firstNameError: "",
                 }));
               }}
+              value={userData.firstName}
+              type="text"
+              placeHolder="John"
             />
-            <span className="input--error--message">{userData.nameError}</span>
-          </div>
-          <div
-            className={`input--container input--${
-              userData.mailError.length ? "error" : "standard"
-            } m-t-2`}
-          >
-            <label htmlFor="email" className="input--label">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="input"
-              placeholder="john@example.com"
-              value={userData.userMail}
-              onChange={(e) => {
+            <InputTextBox
+              error={userData.lastNameError}
+              labelName="Last Name"
+              id="lastName"
+              changeHandler={(e) => {
                 setUserData((prevData) => ({
                   ...prevData,
-                  userMail: e.target.value,
-                  mailError: "",
+                  lastName: e.target.value,
+                  lastNameError: "",
                 }));
               }}
+              value={userData.lastName}
+              type="text"
+              placeHolder="Doe"
             />
-            <span className="input--error--message">{userData.mailError}</span>
           </div>
-          <div
-            className={`input--container input--${
-              userData.passwordError.length ? "error" : "standard"
-            } m-t-2`}
-          >
-            <label htmlFor="password" className="input--label">
-              password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="input"
-              placeholder="********"
-              value={userData.password}
-              onChange={(e) => {
-                setUserData((prevData) => ({
-                  ...prevData,
-                  password: e.target.value,
-                  passwordError: "",
-                }));
-              }}
-            />
-            <span className="input--error--message">
-              {userData.passwordError}
-            </span>
-          </div>
+          <InputTextBox
+            error={userData.mailError}
+            labelName="Email"
+            id="email"
+            changeHandler={(e) => {
+              setUserData((prevData) => ({
+                ...prevData,
+                userMail: e.target.value,
+                mailError: "",
+              }));
+            }}
+            value={userData.userMail}
+            type="email"
+            placeHolder="johndoe@example.com"
+          />
+
+          <InputPassword
+            error={userData.passwordError}
+            labelName="Password"
+            id="password"
+            value={userData.password}
+            changeHandler={(e) => {
+              setUserData((prevData) => ({
+                ...prevData,
+                password: e.target.value,
+                passwordError: "",
+              }));
+            }}
+          />
+          <InputPassword
+            error={userData.confirmPasswordError}
+            labelName="Confirm password"
+            id="confirmPassword"
+            value={userData.confirmPassword}
+            changeHandler={(e) => {
+              setUserData((prevData) => ({
+                ...prevData,
+                confirmPassword: e.target.value,
+                confirmPasswordError: "",
+              }));
+            }}
+          />
 
           <div className="remember--container m-t-1 m-h-1">
             <span className="input--standard">

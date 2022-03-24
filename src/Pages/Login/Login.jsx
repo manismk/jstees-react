@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Navbar } from "../../components/Navbar/Navbar";
 import "../Login/auth.css";
 import { useAuth } from "../../context/auth-context";
 import { handleLoginValidation } from "../../utils";
+import { InputPassword, InputTextBox } from "../../components/Input";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -35,60 +35,37 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <main>
         <div className="login--container">
           <h1 className="heading--3 text--center">Login</h1>
-          <div
-            className={`input--container input--${
-              userData.mailError.length ? "error" : "standard"
-            } m-t-2`}
-          >
-            <label htmlFor="email" className="input--label">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="input"
-              placeholder="test@test.in"
-              value={userData.userMail}
-              onChange={(e) => {
-                setUserData((prevData) => ({
-                  ...prevData,
-                  userMail: e.target.value,
-                  mailError: "",
-                }));
-              }}
-            />
-            <span className="input--error--message">{userData.mailError}</span>
-          </div>
-          <div
-            className={`input--container input--${
-              userData.passwordError.length ? "error" : "standard"
-            } m-t-2`}
-          >
-            <label htmlFor="password" className="input--label">
-              password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="input"
-              placeholder="********"
-              value={userData.password}
-              onChange={(e) =>
-                setUserData((prevData) => ({
-                  ...prevData,
-                  password: e.target.value,
-                  passwordError: "",
-                }))
-              }
-            />
-            <span className="input--error--message">
-              {userData.passwordError}
-            </span>
-          </div>
+          <InputTextBox
+            error={userData.mailError}
+            labelName={"Email"}
+            id={"email"}
+            placeHolder="test@test.com"
+            changeHandler={(e) => {
+              setUserData((prevData) => ({
+                ...prevData,
+                userMail: e.target.value,
+                mailError: "",
+              }));
+            }}
+            type="email"
+            value={userData.userMail}
+          />
+          <InputPassword
+            error={userData.passwordError}
+            labelName="Password"
+            id="password"
+            value={userData.password}
+            changeHandler={(e) =>
+              setUserData((prevData) => ({
+                ...prevData,
+                password: e.target.value,
+                passwordError: "",
+              }))
+            }
+          />
 
           <div className="remember--container m-t-1 m-h-1">
             <span className="input--standard">
@@ -123,7 +100,7 @@ const Login = () => {
                 }));
               }}
             >
-              Login with Guest credentials
+              Fill the test credentials
             </button>
           </div>
           <p className="signup--text m-t-1 m-h-1">

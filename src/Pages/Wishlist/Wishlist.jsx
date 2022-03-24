@@ -1,4 +1,3 @@
-import { Navbar } from "../../components/Navbar/Navbar";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { useWishlist } from "../../context";
 import "../../index.css";
@@ -8,8 +7,7 @@ export const Wishlist = () => {
 
   return (
     <>
-      <Navbar />
-      <main className="container">
+      <main className="wish--container">
         <h1 className="heading--2 text--center m-t-2">My wishlist</h1>
         {wishlist.length ? (
           <div className="grid grid--4--cols m-v-2">

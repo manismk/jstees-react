@@ -73,6 +73,10 @@ input[type="number"] {
   border-bottom: 1px solid var(--grey);
 }
 
+.wish--container {
+  margin: 2rem;
+}
+
 @media only screen and (max-width: 800px) {
   .grid--2--cols {
     grid-template-columns: 1fr;

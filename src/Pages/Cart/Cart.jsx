@@ -1,4 +1,3 @@
-import { Navbar } from "../../components/Navbar/Navbar";
 import { useCart } from "../../context";
 import { calculateCartValue } from "../../utils";
 import "./cart.css";
@@ -9,7 +8,6 @@ export const Cart = () => {
   const { actualAmount, discountAmount } = calculateCartValue();
   return (
     <>
-      <Navbar />
       <main className="container">
         <h1 className="heading--2 text--center m-t-2">My Cart</h1>
         {cartList.length ? (

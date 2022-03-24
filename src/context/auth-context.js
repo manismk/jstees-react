@@ -46,11 +46,12 @@ const AuthProvider = ({ children }) => {
       }
     })();
   };
-  const handleSignUp = (userName, userMail, password) => {
+  const handleSignUp = (firstName, lastName, userMail, password) => {
     (async () => {
       try {
         const { status, data } = await axios.post("/api/auth/signup", {
-          firstName: userName,
+          firstName: firstName,
+          lastName: lastName,
           email: userMail,
           password: password,
         });

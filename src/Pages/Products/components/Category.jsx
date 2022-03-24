@@ -1,20 +1,20 @@
 import { InputCheckbox } from "../../../components/Input/InputCheckbox";
 import { useProductData } from "../../../context/product-data-context";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 
 export const Category = () => {
-  const { state, dispatch } = useProductData();
-  const params = useParams();
+  const { state, dispatch, productLoading } = useProductData();
+  const [searchParam] = useSearchParams();
 
   useEffect(() => {
     dispatch({
       type: "CLEAR_ALL",
     });
 
-    if (params.categoryName !== undefined && state.data.length) {
+    if (searchParam.get("category") !== null && state.data.length) {
       Object.keys(state.category).map((category) => {
-        if (category === params.categoryName) {
+        if (category === searchParam.get("category")) {
           dispatch({
             type: "CATEGORY_CHANGE",
             payload: category,
@@ -22,7 +22,7 @@ export const Category = () => {
         }
       });
     }
-  }, [params]);
+  }, [searchParam, productLoading]);
 
   const changeHandler = (e) => {
     dispatch({

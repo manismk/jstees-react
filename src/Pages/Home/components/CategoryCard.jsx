@@ -7,7 +7,7 @@ export const CategoryCard = ({ category }) => {
     <div
       className="category--image"
       onClick={() => {
-        navigate(`/products/${category.categoryName}`);
+        navigate(`/products?category=${category.categoryName}`);
       }}
     >
       <img

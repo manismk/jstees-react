@@ -1,4 +1,3 @@
-import { Navbar } from "../../components/Navbar/Navbar";
 import { Filters } from "./components/Filters";
 import "../Products/products.css";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
@@ -10,7 +9,6 @@ export const Products = () => {
 
   return (
     <>
-      <Navbar />
       {productLoading && <Loader />}
       <main>
         <h1 className="heading--2 text--center m-t-2">Featured Products</h1>

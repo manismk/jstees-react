@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { Navbar } from "../../components/Navbar/Navbar";
 
 export const ForgotPassword = () => {
   return (
     <>
-      <Navbar />
       <main>
         <div className="login--container">
           <h1 className="heading--3 text--center">Forgot password</h1>

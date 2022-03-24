@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { calculateDiscount, getSingleProduct } from "../../utils";
 import "./singleProduct.css";
 import {
@@ -43,7 +42,6 @@ export const SingleProduct = () => {
 
   return (
     <>
-      <Navbar />
       <main>
         {data.product === null ? (
           "Error"

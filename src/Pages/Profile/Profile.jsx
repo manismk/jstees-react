@@ -1,4 +1,3 @@
-import { Navbar } from "../../components/Navbar/Navbar";
 import { useAuth } from "../../context/auth-context";
 import "./profile.css";
 
@@ -7,7 +6,6 @@ export const Profile = () => {
 
   return (
     <>
-      <Navbar />
       <main>
         <div className="user--container">
           <h1 className="heading--3 text--center">My Account</h1>
@@ -22,7 +20,7 @@ export const Profile = () => {
           {authData.isLoggedIn ? (
             <div>
               <p className="username text--center">
-                {authData.userData.firstName}
+                {`${authData.userData.firstName} ${authData.userData.lastName}`}
               </p>
               <div className="email--container">
                 <p className="email--label">Email</p>
