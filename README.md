@@ -1,7 +1,7 @@
 # JsTees
 **JsTees is an Ecom app for those who love T-shirt and Javascript. Build with React .**
 
-**Take a look at [Jstees](https://jstees.netlify.app/)**
+**Take a look at [Jstees](https://jstees-react.netlify.app/)**
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e31a5798-6d85-4cc7-a626-72f6f81d1636/deploy-status)](https://app.netlify.com/sites/jstees-react/deploys)
 
@@ -85,7 +85,7 @@ As of now this app uses mock API as the backend, Hence the data can't be persist
 
 ## Demo
 
-![Jstees Demo](Jstees-react.gif)
+![Jstees Demo](jstees-react.gif)
 
 ---
 
