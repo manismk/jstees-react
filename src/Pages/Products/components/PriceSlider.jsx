@@ -1,29 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useProductData } from "../../../context/product-data-context";
 
 export const PriceSlider = () => {
-  const { state, dispatch } = useProductData();
+  const { productDataState, productDataDispatch } = useProductData();
   const [sliderValue, setSliderValue] = useState({
     class: "hide",
-    leftValue: state.maxPrice / 10 - 2,
-    bgValue: state.maxPrice / 10,
+    leftValue: productDataState.maxPrice / 10 - 2,
+    bgValue: productDataState.maxPrice / 10,
   });
 
-  const updateSlider = (e) => {
+  useEffect(() => {
+    updateSlider(productDataState.maxPrice);
+  }, [productDataState.maxPrice]);
+
+  const updateSlider = (value) => {
     setSliderValue((prev) => ({
       ...prev,
       class: "",
-      leftValue: e.target.value / 10 - 2,
-      bgValue: e.target.value / 10,
+      leftValue: value / 10 - 2,
+      bgValue: value / 10,
     }));
-    dispatch({ type: "PRICE_CHANGE", payload: e.target.value });
+    productDataDispatch({ type: "PRICE_CHANGE", payload: value });
   };
 
   return (
     <div className="range">
+      <h4 className="heading--4">Price</h4>
       <div className={`sliderValue ${sliderValue.class}`}>
         <span style={{ left: `${sliderValue.leftValue}%` }}>
-          {state.maxPrice}
+          {productDataState.maxPrice}
         </span>
       </div>
       <input
@@ -40,8 +45,8 @@ export const PriceSlider = () => {
             var(--info-light) ${sliderValue.bgValue}%,
             var(--info-light) 100%`,
         }}
-        value={state.maxPrice}
-        onChange={(e) => updateSlider(e)}
+        value={productDataState.maxPrice}
+        onChange={(e) => updateSlider(e.target.value)}
         onBlur={() => setSliderValue((prev) => ({ ...prev, class: "hide" }))}
         onFocus={() => setSliderValue((prev) => ({ ...prev, class: "" }))}
       />

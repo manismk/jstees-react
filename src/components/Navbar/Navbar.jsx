@@ -22,12 +22,13 @@ const Navbar = () => {
       <nav className="nav--items">
         <ul className="list list--space">
           <li>
-            <Link to="/products">
+            <Link className="nav--item--container" to="/products">
               <i className="fas fa-store"></i>
+              <span>Store</span>
             </Link>
           </li>
           <li>
-            <Link to="/wishlist">
+            <Link className="nav--item--container" to="/wishlist">
               <div className="badge--container">
                 <i className="fas fa-heart"></i>
                 {authData.isLoggedIn && wishlist.length > 0 && (
@@ -36,10 +37,11 @@ const Navbar = () => {
                   </span>
                 )}
               </div>
+              <span>Wishlist</span>
             </Link>
           </li>
           <li>
-            <Link to="/cart">
+            <Link className="nav--item--container" to="/cart">
               <div className="badge--container">
                 <i className="fas fa-shopping-cart"></i>
                 {authData.isLoggedIn && cartList.length > 0 && (
@@ -48,19 +50,22 @@ const Navbar = () => {
                   </span>
                 )}
               </div>
+              <span>Cart</span>
             </Link>
           </li>
 
           {authData.isLoggedIn ? (
             <li>
-              <Link to="/profile">
+              <Link className="nav--item--container" to="/profile">
                 <i className="fas fa-user"></i>
+                <span>Profile</span>
               </Link>
             </li>
           ) : (
             <li>
-              <Link to="/login">
+              <Link className="nav--item--container" to="/login">
                 <i className="fas fa-sign-in"></i>
+                <span>Login</span>
               </Link>
             </li>
           )}

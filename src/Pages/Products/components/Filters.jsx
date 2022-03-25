@@ -5,7 +5,7 @@ import { Category, Sort, PriceSlider, Ratings } from "./index";
 const toggleFilter = () => {};
 
 export const Filters = () => {
-  const { dispatch } = useProductData();
+  const { productDataDispatch } = useProductData();
   const [isFilterShown, setFilter] = useState(false);
   return (
     <>
@@ -13,7 +13,7 @@ export const Filters = () => {
         className="filter--button"
         onClick={() => setFilter((prev) => !prev)}
       >
-        Filter <i className="fas fa-arrow-right"></i>
+        <i className="fas fa-arrow-left"></i> Filter
       </button>
       <div
         className={`overlay ${isFilterShown ? "" : "hide"}`}
@@ -31,7 +31,7 @@ export const Filters = () => {
           <button
             className="btn btn--clear"
             onClick={() => {
-              dispatch({ type: "CLEAR_ALL" });
+              productDataDispatch({ type: "CLEAR_ALL" });
             }}
           >
             Clear

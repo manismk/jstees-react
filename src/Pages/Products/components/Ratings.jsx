@@ -2,10 +2,10 @@ import { InputRadioButton } from "../../../components/Input/InputRadioButton";
 import { useProductData } from "../../../context/product-data-context";
 
 export const Ratings = () => {
-  const { state, dispatch } = useProductData();
+  const { productDataState, productDataDispatch } = useProductData();
 
   const changeHandler = (e) => {
-    dispatch({ type: "RATING_CHANGE", payload: e.target.value });
+    productDataDispatch({ type: "RATING_CHANGE", payload: e.target.value });
   };
   return (
     <div className="filter--rating m-v-1">
@@ -17,7 +17,7 @@ export const Ratings = () => {
         value="4"
         labelName="4 star & above"
         name="starRating"
-        checkedState={state.rating === "4" ? true : false}
+        checkedState={productDataState.rating === "4" ? true : false}
       />
       <InputRadioButton
         changeHandler={changeHandler}
@@ -25,7 +25,7 @@ export const Ratings = () => {
         value="3"
         labelName="3 star & above"
         name="starRating"
-        checkedState={state.rating === "3" ? true : false}
+        checkedState={productDataState.rating === "3" ? true : false}
       />
       <InputRadioButton
         changeHandler={changeHandler}
@@ -33,7 +33,7 @@ export const Ratings = () => {
         value="2"
         labelName="2 star & above"
         name="starRating"
-        checkedState={state.rating === "2" ? true : false}
+        checkedState={productDataState.rating === "2" ? true : false}
       />
       <InputRadioButton
         changeHandler={changeHandler}
@@ -41,7 +41,7 @@ export const Ratings = () => {
         value="1"
         labelName="1 star & above"
         name="starRating"
-        checkedState={state.rating === "1" ? true : false}
+        checkedState={productDataState.rating === "1" ? true : false}
       />
     </div>
   );

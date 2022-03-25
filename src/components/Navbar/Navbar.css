@@ -51,6 +51,22 @@
   background-color: var(--info-dark);
 }
 
+.nav--item--container {
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.nav--item--container:hover {
+  color: var(--info-dark);
+}
+
+.nav--item--container span {
+  font-weight: 500;
+}
+
 .search--container {
   position: absolute;
   width: 100%;

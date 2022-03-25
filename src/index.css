@@ -66,6 +66,21 @@ body {
   color: var(--info-dark);
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--primary--light);
+  border: 1px solid var(--primary--color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary--color);
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 1100px) {
   .grid--4--cols {
     grid-template-columns: repeat(3, 1fr);
@@ -79,6 +94,9 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+  .Toastify__toast-container .Toastify__toast {
+    margin: 1rem;
+  }
   .grid--4--cols {
     grid-template-columns: 1fr;
   }

@@ -7,7 +7,7 @@ import { CategoryCard } from "./components/CategoryCard";
 import { Loader } from "../../components/Loader/Loader";
 
 export const Home = () => {
-  const { state, productLoading } = useProductData();
+  const { productDataState, productLoading } = useProductData();
 
   return (
     <>
@@ -24,8 +24,8 @@ export const Home = () => {
           </div>
           <h2 className="heading--3 text--center m-b-2">Tees Category</h2>
           <div className="category--container grid grid--4--cols m-b-2">
-            {state.categories.length
-              ? state.categories.map((category) => (
+            {productDataState.categories.length
+              ? productDataState.categories.map((category) => (
                   <CategoryCard category={category} key={category._id} />
                 ))
               : "Loading..."}

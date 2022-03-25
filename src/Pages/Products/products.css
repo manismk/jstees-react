@@ -10,6 +10,7 @@
   top: 12vh;
   bottom: 0;
   transition: transform 0.5s ease;
+  box-shadow: 0px 1px 6px -2px rgb(0 0 0 / 40%);
 }
 
 .filter--header {
@@ -32,7 +33,7 @@
 
 /* main- container styles */
 .main--container {
-  margin: 2rem 2rem 2rem 14rem;
+  margin: 2rem 2rem 2rem 15rem;
 }
 
 .input--primary input[type="radio"],
@@ -50,12 +51,12 @@ input[type="checkbox"] + label {
   position: fixed;
   top: 25vh;
   z-index: 6;
-  left: 0;
+  right: 0;
   cursor: pointer;
   background-color: var(--primary--light);
   font-size: 1.25rem;
   border: 1px solid var(--primary--color);
-  transform: translateX(-50rem);
+  transform: translateX(50rem);
   transition: transform 0.5s ease;
 }
 
@@ -69,6 +70,7 @@ input[type="checkbox"] + label {
   right: 1rem;
   display: none;
   padding: 2px;
+  padding-top: 3rem;
 }
 
 .overlay {
@@ -176,10 +178,13 @@ input[type="checkbox"] + label {
   }
 
   .filter--section {
-    top: 20vh;
-    transform: translateX(-50rem);
+    padding-top: 5rem;
+    top: 0vh;
+    transform: translateX(50rem);
     z-index: 10;
-    background-color: var(--primary--light);
+    right: 0;
+    background-color: var(--bg-white);
+    height: 100%;
   }
 
   .filter--button {

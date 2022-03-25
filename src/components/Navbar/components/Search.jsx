@@ -4,7 +4,7 @@ import { SearchItem } from "./SearchItem";
 
 export const Search = () => {
   const [search, setSearch] = useState({ text: "", isFormShown: false });
-  const { state, dispatch } = useProductData();
+  const { productDataState, productDataDispatch } = useProductData();
 
   const closeSearch = () => {
     setSearch({ text: "", isFormShown: false });
@@ -13,7 +13,7 @@ export const Search = () => {
   const changeHandler = (e) => {
     if (e.target.value.length >= 1) {
       setSearch({ isFormShown: true, text: e.target.value });
-      dispatch({ type: "SEARCH_PRODUCTS", payload: e.target.value });
+      productDataDispatch({ type: "SEARCH_PRODUCTS", payload: e.target.value });
     } else {
       closeSearch();
     }
@@ -36,8 +36,8 @@ export const Search = () => {
         onChange={(e) => changeHandler(e)}
       />
       <div className={`search--container ${search.isFormShown ? "" : "hide"}`}>
-        {state.searchData.length
-          ? state.searchData.map(
+        {productDataState.searchData.length
+          ? productDataState.searchData.map(
               (item, index) =>
                 index <= 4 && (
                   <SearchItem
