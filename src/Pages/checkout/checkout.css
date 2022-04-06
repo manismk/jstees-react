@@ -1,0 +1,22 @@
+.checkout--container.grid--2--cols {
+  grid-template-columns: 4fr 6fr;
+}
+
+.address--container {
+  align-self: self-start;
+  background-color: var(--white);
+  padding: 2rem 4rem;
+  border-radius: 5px;
+  box-shadow: 2px 3px 10px 0px rgb(0 0 0 / 20%);
+  margin-left: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .checkout--container.grid--2--cols {
+    grid-template-columns: 1fr;
+  }
+  .address--container {
+    margin: 0 1rem;
+    padding: 2rem;
+  }
+}

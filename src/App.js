@@ -9,6 +9,7 @@ import {
   Cart,
   Profile,
   SingleProduct,
+  Checkout,
 } from "./Pages";
 
 import Mockman from "mockman-js";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
         <Route path="/mock" element={<Mockman />} />
       </Routes>

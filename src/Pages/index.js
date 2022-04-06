@@ -7,6 +7,7 @@ import { Profile } from "../Pages/Profile/Profile";
 import { SignUp } from "../Pages/SignUp/SignUp";
 import { SingleProduct } from "../Pages/SingleProduct/SingleProduct";
 import { Wishlist } from "../Pages/Wishlist/Wishlist";
+import { Checkout } from "./checkout/Checkout";
 
 export {
   Cart,
@@ -18,4 +19,5 @@ export {
   SignUp,
   SingleProduct,
   Wishlist,
+  Checkout,
 };
