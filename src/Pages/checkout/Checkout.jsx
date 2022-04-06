@@ -1,4 +1,4 @@
-import { useCart } from "../../context";
+import { useAuth, useCart } from "../../context";
 import "./checkout.css";
 
 const address = {
@@ -11,6 +11,51 @@ const address = {
 
 export const Checkout = () => {
   const { cartList, cartData } = useCart();
+  const { authData } = useAuth();
+
+  async function loadRazorPay() {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  async function payViaRazorPay() {
+    const response = await loadRazorPay();
+    if (!response) return console.error("Error in loading razorpay sdk");
+    var options = {
+      key_id: "rzp_test_CJOl9s5EvJy4oC",
+      key: "rzp_test_CJOl9s5EvJy4oC",
+      key_secret: "o0cKBLTsSo1SY2MI1ihIs2Ta",
+      amount: (cartData.cartAmount - cartData.couponAmount + 100) * 100,
+      currency: "INR",
+      name: "JS TEES",
+      description: "Keep coding ! Happy Building !!",
+      image: "https://jstees-react.netlify.app/favicon.ico",
+
+      handler: function (response) {
+        alert(response.razorpay_payment_id);
+      },
+      prefill: {
+        name: `${authData?.userData?.firstName} ${authData?.userData?.lastName}`,
+        email: authData?.userData?.email,
+        contact: "9876543210",
+      },
+      theme: {
+        color: "#fea620",
+      },
+    };
+
+    var rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  }
 
   return (
     <main className="container">
@@ -66,7 +111,10 @@ export const Checkout = () => {
               <p>{`${address.city}, ${address.state} - ${address.pincode}`}</p>
             </div>
 
-            <button className="btn btn--primary w-100 m-t-1">
+            <button
+              className="btn btn--primary w-100 m-t-1"
+              onClick={() => payViaRazorPay()}
+            >
               Proceed to payment
             </button>
           </div>
