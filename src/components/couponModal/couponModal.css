@@ -1,0 +1,7 @@
+.modal--coupon {
+  position: fixed;
+}
+
+.error--text {
+  color: var(--danger-dark);
+}

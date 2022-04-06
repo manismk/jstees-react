@@ -77,6 +77,13 @@ input[type="number"] {
   margin: 2rem;
 }
 
+.coupon--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 @media only screen and (max-width: 800px) {
   .grid--2--cols {
     grid-template-columns: 1fr;

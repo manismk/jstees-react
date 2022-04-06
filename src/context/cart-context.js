@@ -9,6 +9,11 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const { authData } = useAuth();
   const [cartList, setCartList] = useState([]);
+  const [cartData, setCartData] = useState({
+    cartAmount: 0,
+    discountAmount: 0,
+    couponAmount: 0,
+  });
 
   useEffect(() => {
     if (authData.isLoggedIn) {
@@ -107,6 +112,8 @@ const CartProvider = ({ children }) => {
         handleCartAddition,
         handleCartDeletion,
         handleCartQuantityChange,
+        cartData,
+        setCartData,
       }}
     >
       {children}
