@@ -1,5 +1,7 @@
 import { useAuth, useCart } from "../../context";
 import "./checkout.css";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const address = {
   userName: "John Doe's House",
@@ -10,8 +12,9 @@ const address = {
 };
 
 export const Checkout = () => {
-  const { cartList, cartData } = useCart();
+  const { cartList, cartData, handleCartDeletion } = useCart();
   const { authData } = useAuth();
+  const navigate = useNavigate();
 
   async function loadRazorPay() {
     return new Promise((resolve) => {
@@ -41,7 +44,12 @@ export const Checkout = () => {
       image: "https://jstees-react.netlify.app/favicon.ico",
 
       handler: function (response) {
-        alert(response.razorpay_payment_id);
+        cartList.map((product) => handleCartDeletion(product, true));
+        toast.success(
+          `Payment has been Made successfully. Your payment Id is ${response.razorpay_payment_id}. Order will reach you in next 7 days. Thanks for purchasing with us`,
+          { autoClose: 3000 }
+        );
+        navigate("/");
       },
       prefill: {
         name: `${authData?.userData?.firstName} ${authData?.userData?.lastName}`,

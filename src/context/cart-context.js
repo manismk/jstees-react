@@ -63,7 +63,7 @@ const CartProvider = ({ children }) => {
     })();
   };
 
-  const handleCartDeletion = (product) => {
+  const handleCartDeletion = (product, notShowToast) => {
     (async () => {
       try {
         const { status, data } = await axios.delete(
@@ -75,7 +75,7 @@ const CartProvider = ({ children }) => {
 
         if (status === 200) {
           setCartList(data.cart);
-          toast.error("Removed from cart");
+          !notShowToast && toast.error("Removed from cart");
         }
       } catch (e) {
         console.error("Error in Deleting cart Item", e);

@@ -18,6 +18,13 @@ const couponData = [
     value: 2500,
     percent: 20,
   },
+  {
+    id: 3,
+    coupon: "FLAT30",
+    description: "Get 30% OFF on orders above ",
+    value: 10000,
+    percent: 30,
+  },
 ];
 
 const couponHandler = (
