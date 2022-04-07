@@ -9,10 +9,11 @@
 
 ## Table of Contents
 1. [Features](#Features)
-2. [Todo](#todo)
-3. [Demo](#demo)
-4. [Reference](#reference)
-5. [Author](#author)
+2. [Run Locally](#run-locally)
+3. [Todo](#todo)
+4. [Demo](#demo)
+5. [Reference](#reference)
+6. [Author](#author)
 
 ---
 
@@ -86,6 +87,17 @@
 - After the successfull payment showing the message in toast, clearing the cart and redirecting to Home
 
 As of now this app uses mock API as the backend, Hence the data can't be persisted on refresh. Will try to add backend in the future.
+
+---
+
+## Run Locally
+
+```git
+$ git clone https://github.com/manismk/jstees-react.git
+$ cd jstees-react
+$ npm install
+$ npm start  
+```
 
 ---
 
