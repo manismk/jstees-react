@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { CouponModal } from "../../components/couponModal/CouponModal";
 import { useCart } from "../../context";
@@ -10,6 +11,7 @@ export const Cart = () => {
   const { cartList, setCartData, cartData } = useCart();
   const { actualAmount, discountAmount } = calculateCartValue();
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCartData((prev) => ({
@@ -58,7 +60,7 @@ export const Cart = () => {
                 {cartData.couponAmount > 0 && (
                   <div className="price--sub--container">
                     <p className="price--label ">
-                      Coupon
+                      Coupon Discount
                       <button
                         className="btn icon--btn m-l-1 error--text text--bold"
                         onClick={() =>
@@ -85,8 +87,11 @@ export const Cart = () => {
                       100}
                   </p>
                 </div>
-                <button className="btn btn--primary w-100 m-t-1">
-                  Place Order
+                <button
+                  className="btn btn--primary w-100 m-t-1"
+                  onClick={() => navigate("/checkout")}
+                >
+                  Proceed to checkout
                 </button>
               </div>
             </div>
