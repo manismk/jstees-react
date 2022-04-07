@@ -10,6 +10,7 @@ import {
   Profile,
   SingleProduct,
   Checkout,
+  Error404,
 } from "./Pages";
 
 import Mockman from "mockman-js";
@@ -42,6 +43,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Route>
         <Route path="/mock" element={<Mockman />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <ToastContainer
         position="top-right"

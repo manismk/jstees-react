@@ -8,6 +8,7 @@ import { SignUp } from "../Pages/SignUp/SignUp";
 import { SingleProduct } from "../Pages/SingleProduct/SingleProduct";
 import { Wishlist } from "../Pages/Wishlist/Wishlist";
 import { Checkout } from "./checkout/Checkout";
+import { Error404 } from "./error404/Error404";
 
 export {
   Cart,
@@ -20,4 +21,5 @@ export {
   SingleProduct,
   Wishlist,
   Checkout,
+  Error404,
 };
