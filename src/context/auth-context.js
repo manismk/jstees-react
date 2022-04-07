@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const getInitialData = () => {
@@ -14,7 +14,9 @@ const getInitialData = () => {
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/products";
   const [authData, setAuthData] = useState(getInitialData());
 
   const handleLogin = (userMail, password) => {
@@ -33,7 +35,7 @@ const AuthProvider = ({ children }) => {
             userData: data.foundUser,
           }));
           toast.success("Login Successful");
-          navigate("/products");
+          navigate(from, { replace: true });
         }
         if (status === 201) {
           setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
@@ -64,7 +66,7 @@ const AuthProvider = ({ children }) => {
             isLoggedIn: true,
             userData: data.createdUser,
           }));
-          navigate("/products");
+          navigate(from, { replace: true });
           toast.success("User created successfully");
         }
       } catch (e) {

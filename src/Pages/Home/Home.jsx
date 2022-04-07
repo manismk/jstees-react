@@ -1,4 +1,3 @@
-import { bannerOptimized } from "../../assets/index";
 import "../Home/home.css";
 
 import { Link } from "react-router-dom";
@@ -16,7 +15,7 @@ export const Home = () => {
           <div className="banner">
             <Link to="products">
               <img
-                src={bannerOptimized}
+                src={`${process.env.PUBLIC_URL}/assets/bannerOptimized.jpg`}
                 alt="jsTees banner"
                 className="img--res"
               />
