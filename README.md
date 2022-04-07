@@ -71,15 +71,28 @@
 **Loaders and Toasts**
 - Loaders and toast is provided as the acknowledgment to the users
 
+**Coupon**
+- User can apply the coupon on cart page
+- Coupons will be shown in the popup based on cart value
+- User can select any one coupon from the popup
+- User can also remove the coupon and add other coupons
+
+**Checkout Page**
+- Checkout page shows summary of the product and delevering address
+- Button to proceed payment.
+
+**Payment Integration**
+- Clicking on proceed to pay button on checkout page will open razor pay test payment
+- After the successfull payment showing the message in toast, clearing the cart and redirecting to Home
+
 As of now this app uses mock API as the backend, Hence the data can't be persisted on refresh. Will try to add backend in the future.
 
 ---
 
 ## Todo
 
-- Checkout page
-- Test payment
 - Address management
+- Order summary
 
 ---
 
