@@ -1,12 +1,23 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useProductData } from "../../../context/product-data-context";
 import { Category, Sort, PriceSlider, Ratings } from "./index";
-
-const toggleFilter = () => {};
 
 export const Filters = () => {
   const { productDataDispatch } = useProductData();
   const [isFilterShown, setFilter] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 760) setFilter(false);
+    });
+
+    return () =>
+      window.removeEventListener("resize", () => {
+        if (window.innerWidth >= 760) setFilter(false);
+      });
+  });
+
   return (
     <>
       <button

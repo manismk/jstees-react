@@ -18,6 +18,11 @@ body {
   margin: 0 auto;
 }
 
+.container-100 {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
 .grid {
   gap: 2rem;
 }
