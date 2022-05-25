@@ -13,6 +13,7 @@ const CartProvider = ({ children }) => {
     cartAmount: 0,
     discountAmount: 0,
     couponAmount: 0,
+    couponPercent: 0,
   });
 
   useEffect(() => {

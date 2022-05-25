@@ -12,7 +12,7 @@ const address = {
 };
 
 export const Checkout = () => {
-  const { cartList, cartData, handleCartDeletion } = useCart();
+  const { cartList, cartData, setCartData, handleCartDeletion } = useCart();
   const { authData } = useAuth();
   const navigate = useNavigate();
 
@@ -45,6 +45,7 @@ export const Checkout = () => {
 
       handler: function (response) {
         cartList.map((product) => handleCartDeletion(product, true));
+        setCartData((prev) => ({ ...prev, couponPercent: 0 }));
         toast.success(
           `Payment has been Made successfully. Your payment Id is ${response.razorpay_payment_id}. Order will reach you in next 7 days. Thanks for purchasing with us`,
           { autoClose: 3000 }

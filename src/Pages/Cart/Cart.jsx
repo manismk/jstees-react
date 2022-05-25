@@ -18,6 +18,7 @@ export const Cart = () => {
       ...prev,
       cartAmount: actualAmount - discountAmount,
       discountAmount,
+      couponAmount: cartData.couponPercent * (actualAmount - discountAmount),
     }));
   }, [actualAmount, discountAmount]);
   return (
@@ -32,7 +33,7 @@ export const Cart = () => {
               })}
             </div>
             <div className="price--container">
-              {cartData.couponAmount ? (
+              {cartData.couponAmount > 0 ? (
                 ""
               ) : (
                 <div className="coupon--container">
@@ -64,13 +65,17 @@ export const Cart = () => {
                       <button
                         className="btn icon--btn m-l-1 error--text text--bold"
                         onClick={() =>
-                          setCartData((prev) => ({ ...prev, couponAmount: 0 }))
+                          setCartData((prev) => ({
+                            ...prev,
+                            couponAmount: 0,
+                            couponPercent: 0,
+                          }))
                         }
                       >
                         <i className="fa fa-times " aria-hidden="true"></i>
                       </button>
                     </p>
-                    <p className="price--amount">{cartData.couponAmount}</p>
+                    <p className="price--amount">-₹{cartData.couponAmount}</p>
                   </div>
                 )}
                 <div className="price--sub--container">
