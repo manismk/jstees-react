@@ -37,16 +37,13 @@ export const Search = () => {
       />
       <div className={`search--container ${search.isFormShown ? "" : "hide"}`}>
         {productDataState.searchData.length
-          ? productDataState.searchData.map(
-              (item, index) =>
-                index <= 4 && (
-                  <SearchItem
-                    item={item}
-                    closeSearch={closeSearch}
-                    key={item._id}
-                  />
-                )
-            )
+          ? productDataState.searchData.map((item) => (
+              <SearchItem
+                item={item}
+                closeSearch={closeSearch}
+                key={item._id}
+              />
+            ))
           : "No products found"}
       </div>
     </div>
