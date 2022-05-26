@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProfileContainer } from "./components";
+import { AddressContainer, ProfileContainer } from "./components";
 import "./profile.css";
 
 export const Profile = () => {
@@ -32,6 +32,7 @@ export const Profile = () => {
           </button>
         </div>
         {showingTab === "profile" && <ProfileContainer />}
+        {showingTab === "address" && <AddressContainer />}
       </main>
     </>
   );

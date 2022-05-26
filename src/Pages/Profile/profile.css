@@ -55,3 +55,33 @@
 .email--label {
   font-weight: 600;
 }
+
+.address--item {
+  padding: 1rem;
+  border: 1px solid;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.address--actions {
+  display: flex;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  gap: 1rem;
+}
+
+.address--wrapper {
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .user--container {
+    max-width: 70%;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .user--container {
+    max-width: 85%;
+  }
+}
