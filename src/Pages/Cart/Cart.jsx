@@ -18,8 +18,20 @@ export const Cart = () => {
       ...prev,
       cartAmount: actualAmount - discountAmount,
       discountAmount,
-      couponAmount: cartData.couponPercent * (actualAmount - discountAmount),
     }));
+    if (actualAmount - discountAmount > cartData.couponValue) {
+      setCartData((prev) => ({
+        ...prev,
+        couponAmount: cartData.couponPercent * (actualAmount - discountAmount),
+      }));
+    } else {
+      setCartData((prev) => ({
+        ...prev,
+        couponAmount: 0,
+        couponValue: 0,
+        couponPercent: 0,
+      }));
+    }
   }, [actualAmount, discountAmount]);
   return (
     <>
@@ -69,6 +81,7 @@ export const Cart = () => {
                             ...prev,
                             couponAmount: 0,
                             couponPercent: 0,
+                            couponValue: 0,
                           }))
                         }
                       >

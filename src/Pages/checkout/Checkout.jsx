@@ -99,7 +99,7 @@ export const Checkout = () => {
               {cartData.couponAmount > 0 && (
                 <div className="price--sub--container">
                   <p className="price--label ">Coupon Discount</p>
-                  <p className="price--amount">{cartData.couponAmount}</p>
+                  <p className="price--amount">-₹{cartData.couponAmount}</p>
                 </div>
               )}
               <div className="price--sub--container">

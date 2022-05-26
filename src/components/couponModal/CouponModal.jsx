@@ -43,6 +43,7 @@ const couponHandler = (
           cartData.cartAmount,
         couponPercent:
           couponData.find((cou) => cou.coupon === couponValue).percent / 100,
+        couponValue: couponData.find((cou) => cou.coupon === couponValue).value,
       })),
       closeModal());
 };
