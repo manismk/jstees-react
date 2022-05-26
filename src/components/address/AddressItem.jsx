@@ -1,14 +1,4 @@
-const address = {
-  name: "John Doe's House",
-  street: "59/1, 7th cross street",
-  city: "Chennai",
-  state: "Tamil Nadu",
-  country: "India",
-  pincode: "600028",
-  phone: "999999999",
-};
-
-export const AddressItem = () => {
+export const AddressItem = ({ address }) => {
   return (
     <div className="address--item">
       <div className="address--actions">
@@ -22,7 +12,7 @@ export const AddressItem = () => {
       <p className="text--bold">{address.name}</p>
       <p>{address.street}</p>
       <p>{`${address.city}, ${address.state}, ${address.country} - ${address.pincode}`}</p>
-      <p>{`Phone - ${address.phone}`}</p>
+      <p>{`Phone - ${address.mobile}`}</p>
     </div>
   );
 };
