@@ -94,6 +94,27 @@ const AddressProvider = ({ children }) => {
       toast.error("Something Went wrong", { autoClose: false });
     }
   };
+  const updateAddress = async (addressId, address) => {
+    try {
+      const { status, data } = await axios.post(
+        `/api/user/address/${addressId}`,
+        {
+          address,
+        },
+        {
+          headers: { authorization: localStorage.getItem("token") },
+        }
+      );
+
+      if (status === 200) {
+        setUserAddress(data.address);
+        toast.success("Address Updated");
+      } else throw new Error("Unhandled request code in delete address");
+    } catch (e) {
+      console.error("Error in Updating address", e);
+      toast.error("Something Went wrong", { autoClose: false });
+    }
+  };
 
   return (
     <AddressContext.Provider
@@ -105,6 +126,7 @@ const AddressProvider = ({ children }) => {
         closeModal,
         addAddress,
         deleteAddress,
+        updateAddress,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import { useAddress } from "../../context";
 import { handleAddressValidation } from "../../utils";
 import { InputTextBox } from "../Input/InputTextBox";
@@ -21,7 +22,24 @@ export const AddressModal = () => {
     mobile: "",
     mobileError: "",
   });
-  const { closeModal, addAddress } = useAddress();
+  const { closeModal, addAddress, addressModal, updateAddress } = useAddress();
+
+  useEffect(() => {
+    if (addressModal.isFromEdit) {
+      const { name, street, city, zipcode, state, country, mobile } =
+        addressModal.editData;
+      setAddressData((prev) => ({
+        ...prev,
+        name,
+        street,
+        city,
+        zipcode,
+        state,
+        country,
+        mobile,
+      }));
+    }
+  }, []);
 
   const clickHandler = () => {
     const {
@@ -61,15 +79,27 @@ export const AddressModal = () => {
       zipcodeError === "" &&
       mobileError === ""
     ) {
-      addAddress({
-        name: addressData.name,
-        street: addressData.street,
-        city: addressData.city,
-        state: addressData.state,
-        country: addressData.country,
-        zipcode: addressData.zipcode,
-        mobile: addressData.mobile,
-      });
+      if (addressModal.isFromEdit) {
+        updateAddress(addressModal.editData._id, {
+          name: addressData.name,
+          street: addressData.street,
+          city: addressData.city,
+          state: addressData.state,
+          country: addressData.country,
+          zipcode: addressData.zipcode,
+          mobile: addressData.mobile,
+        });
+      } else {
+        addAddress({
+          name: addressData.name,
+          street: addressData.street,
+          city: addressData.city,
+          state: addressData.state,
+          country: addressData.country,
+          zipcode: addressData.zipcode,
+          mobile: addressData.mobile,
+        });
+      }
       closeModal();
     }
   };
@@ -82,7 +112,9 @@ export const AddressModal = () => {
         >
           <i className="fas fa-times"></i>
         </button>
-        <h5 className="modal--heading heading--4 text--center">Add address</h5>
+        <h5 className="modal--heading heading--4 text--center">
+          {`${addressModal.isFromEdit ? "Edit" : "Add"}`} address
+        </h5>
         <InputTextBox
           error={addressData.nameError}
           labelName={"Name"}
@@ -195,7 +227,7 @@ export const AddressModal = () => {
         />
         <div className="text--center">
           <button className="btn btn--primary" onClick={clickHandler}>
-            Add Address
+            {`${addressModal.isFromEdit ? "Update" : "Add"}`} Address
           </button>
         </div>
       </div>

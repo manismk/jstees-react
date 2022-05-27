@@ -18,6 +18,12 @@
   display: flex;
 }
 
+@media only screen and (max-width: 900px) {
+  .modal--address {
+    min-width: 70%;
+  }
+}
+
 @media only screen and (max-width: 540px) {
   .modal--address {
     min-width: 90%;
