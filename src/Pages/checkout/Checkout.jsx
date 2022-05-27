@@ -1,20 +1,20 @@
-import { useAuth, useCart } from "../../context";
+import { useAddress, useAuth, useCart } from "../../context";
 import "./checkout.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
-const address = {
-  userName: "John Doe's House",
-  street: "59/1, 7th cross street",
-  city: "Chennai",
-  state: "Tamil Nadu",
-  pincode: "600028",
-};
+import { AddressModal } from "../../components/";
+import { useState } from "react";
 
 export const Checkout = () => {
   const { cartList, cartData, setCartData, handleCartDeletion } = useCart();
   const { authData } = useAuth();
   const navigate = useNavigate();
+  const { userAddress, addressModal, openModal, deleteAddress, openFromEdit } =
+    useAddress();
+  const [deliveringAddress, setDeliveringAddress] = useState({
+    error: "",
+    address: null,
+  });
 
   async function loadRazorPay() {
     return new Promise((resolve) => {
@@ -72,12 +72,61 @@ export const Checkout = () => {
       {cartList?.length ? (
         <div className="grid grid--2--cols checkout--container m-v-2 ">
           <div className="address--container">
-            <label>
-              <input type="radio" defaultChecked />
-              <span className="text--bold m-l-1">{address.userName}</span>
-              <p>{address.street}</p>
-              <p>{`${address.city}, ${address.state} - ${address.pincode}`}</p>
-            </label>
+            <h4 className="text--center heading--4">Select Address</h4>
+            {userAddress.length > 0 ? (
+              userAddress.map((address) => {
+                return (
+                  <div className="address--item" key={address._id}>
+                    <div className="address--actions">
+                      <button
+                        className="btn icon--btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openFromEdit(address);
+                        }}
+                      >
+                        <i className="fas fa-edit"></i>
+                      </button>
+                      <button
+                        className="btn icon--btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          deleteAddress(address._id);
+                        }}
+                      >
+                        <i className="fas fa-trash"></i>
+                      </button>
+                    </div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="address"
+                        onChange={() =>
+                          setDeliveringAddress((prev) => ({
+                            ...prev,
+                            address: address,
+                            error: "",
+                          }))
+                        }
+                      />
+                      <span className="text--bold m-l-1">{address.name}</span>
+                      <p>{address.street}</p>
+                      <p>{`${address.city}, ${address.state}`}</p>
+                      <p>{`${address.country} - ${address.zipcode}`}</p>
+                      <p>{`Mobile - ${address.mobile}`}</p>
+                    </label>
+                  </div>
+                );
+              })
+            ) : (
+              <p className="text--center">No saved address found</p>
+            )}
+
+            <p className="text--center m-v-1">
+              <button className="btn btn--primary" onClick={() => openModal()}>
+                Add new Address
+              </button>
+            </p>
           </div>
           <div className="price--container">
             <div className="price--data">
@@ -115,14 +164,36 @@ export const Checkout = () => {
             </div>
             <div className="price--data">
               <h2 className="heading--3 m-v-1 text--center">Delivering To</h2>
-              <p className="text--bold ">{address.userName}</p>
-              <p>{address.street}</p>
-              <p>{`${address.city}, ${address.state} - ${address.pincode}`}</p>
+              {deliveringAddress.address !== null ? (
+                <>
+                  <p className="text--bold ">
+                    {deliveringAddress.address.name}
+                  </p>
+                  <p>{deliveringAddress.address.street}</p>
+                  <p>{`${deliveringAddress.address.city}, ${deliveringAddress.address.state} `}</p>
+                  <p>{`${deliveringAddress.address.country} - ${deliveringAddress.address.zipcode}`}</p>
+                  <p>{`Mobile - ${deliveringAddress.address.mobile}`}</p>
+                </>
+              ) : (
+                <p className="text--center">No delivery address selected</p>
+              )}
+              <p className="input--error--message text--center ">
+                {deliveringAddress.error}
+              </p>
             </div>
 
             <button
               className="btn btn--primary w-100 m-t-1"
-              onClick={() => payViaRazorPay()}
+              onClick={() => {
+                if (deliveringAddress.address !== null) {
+                  payViaRazorPay();
+                } else {
+                  setDeliveringAddress((prev) => ({
+                    ...prev,
+                    error: "Please select the address to deliver",
+                  }));
+                }
+              }}
             >
               Proceed to payment
             </button>
@@ -131,6 +202,7 @@ export const Checkout = () => {
       ) : (
         <p className="result--text text--center m-v-2">No Items in Cart</p>
       )}
+      {addressModal.isOpen && <AddressModal />}
     </main>
   );
 };
