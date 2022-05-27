@@ -1,31 +1,15 @@
-import { calculateCartValue } from "./calculateCartValue";
-import { calculateDiscount } from "./calculateDiscount";
-import { getCategoryData } from "./getCategoryData";
-import { getNewCategoryObj } from "./getNewCategoryObj";
-import { getPriceData } from "./getPriceData";
-import { getRatingData } from "./getRatingData";
-import { getSingleProduct } from "./getSingleProduct";
-import { getSortedData } from "./getSortedData";
-import { handleFilterChange } from "./handleFilterChange";
-import { handleLoginValidation } from "./handleLoginValidation";
-import { handleSearch } from "./handleSearch";
-import { handleSignUpValidation } from "./handleSignUpValidation";
-import { validateMail } from "./validateEmail";
-import { validatePassword } from "./validatePassword";
-
-export {
-  getCategoryData,
-  getNewCategoryObj,
-  getPriceData,
-  getRatingData,
-  getSortedData,
-  handleFilterChange,
-  validateMail,
-  handleSignUpValidation,
-  handleLoginValidation,
-  calculateDiscount,
-  calculateCartValue,
-  getSingleProduct,
-  handleSearch,
-  validatePassword,
-};
+export { calculateCartValue } from "./calculateCartValue";
+export { calculateDiscount } from "./calculateDiscount";
+export { getCategoryData } from "./getCategoryData";
+export { getNewCategoryObj } from "./getNewCategoryObj";
+export { getPriceData } from "./getPriceData";
+export { getRatingData } from "./getRatingData";
+export { getSingleProduct } from "./getSingleProduct";
+export { getSortedData } from "./getSortedData";
+export { handleFilterChange } from "./handleFilterChange";
+export { handleLoginValidation } from "./handleLoginValidation";
+export { handleSearch } from "./handleSearch";
+export { handleSignUpValidation } from "./handleSignUpValidation";
+export { validateMail } from "./validateEmail";
+export { handleAddressValidation } from "./handleAddressValidation";
+export { validatePassword } from "./validatePassword";

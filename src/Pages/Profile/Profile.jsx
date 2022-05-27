@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AddressModal } from "../../components";
 import { AddressContainer, ProfileContainer } from "./components";
 import "./profile.css";
 
@@ -34,6 +35,7 @@ export const Profile = () => {
         {showingTab === "profile" && <ProfileContainer />}
         {showingTab === "address" && <AddressContainer />}
       </main>
+      <AddressModal />
     </>
   );
 };
