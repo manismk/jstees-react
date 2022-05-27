@@ -4,8 +4,11 @@ import { useAuth } from "./auth-context";
 
 const AddressContext = createContext();
 
+const initialModalState = { isOpen: false, isFromEdit: false, editData: {} };
+
 const AddressProvider = ({ children }) => {
   const [userAddress, setUserAddress] = useState([]);
+  const [addressModal, setAddressModal] = useState(initialModalState);
   const { authData } = useAuth();
 
   useEffect(() => {
@@ -33,8 +36,28 @@ const AddressProvider = ({ children }) => {
       setUserAddress([]);
     }
   }, [authData.isLoggedIn]);
+
+  const openModal = () => {
+    setAddressModal((prev) => ({ ...prev, isOpen: true }));
+  };
+
+  const openFromEdit = (data) => {
+    setAddressModal((prev) => ({
+      ...prev,
+      isOpen: true,
+      isFromEdit: true,
+      editData: data,
+    }));
+  };
+
+  const closeModal = () => {
+    setAddressModal(initialModalState);
+  };
+
   return (
-    <AddressContext.Provider value={{ userAddress }}>
+    <AddressContext.Provider
+      value={{ userAddress, addressModal, openFromEdit, openModal, closeModal }}
+    >
       {children}
     </AddressContext.Provider>
   );

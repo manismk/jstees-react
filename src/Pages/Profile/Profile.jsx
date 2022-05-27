@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { AddressModal } from "../../components";
+import { useAddress } from "../../context";
 import { AddressContainer, ProfileContainer } from "./components";
 import "./profile.css";
 
 export const Profile = () => {
   const [showingTab, setShowingTab] = useState("profile");
+  const { addressModal } = useAddress();
   return (
     <>
       <main className="user--container">
@@ -35,7 +37,7 @@ export const Profile = () => {
         {showingTab === "profile" && <ProfileContainer />}
         {showingTab === "address" && <AddressContainer />}
       </main>
-      <AddressModal />
+      {addressModal.isOpen && <AddressModal />}
     </>
   );
 };

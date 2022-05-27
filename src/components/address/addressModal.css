@@ -4,6 +4,12 @@
   overflow-y: auto;
 }
 
+.modal--address .btn--close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .modal--address .m-t-2 {
   margin-top: 1rem;
 }

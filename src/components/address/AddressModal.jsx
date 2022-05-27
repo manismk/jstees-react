@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAddress } from "../../context";
 import { handleAddressValidation } from "../../utils";
 import { InputTextBox } from "../Input/InputTextBox";
 import "./addressModal.css";
@@ -20,6 +21,7 @@ export const AddressModal = () => {
     mobile: "",
     mobileError: "",
   });
+  const { closeModal } = useAddress();
 
   const clickHandler = () => {
     const {
@@ -54,6 +56,12 @@ export const AddressModal = () => {
   return (
     <>
       <div className="modal modal--alert modal--address ">
+        <button
+          className="btn icon--btn btn--close"
+          onClick={() => closeModal()}
+        >
+          <i className="fas fa-times"></i>
+        </button>
         <h5 className="modal--heading heading--4 text--center">Add address</h5>
         <InputTextBox
           error={addressData.nameError}
@@ -171,7 +179,7 @@ export const AddressModal = () => {
           </button>
         </div>
       </div>
-      <div className="overlay  overlay--top"></div>
+      <div className="overlay  overlay--top" onClick={() => closeModal()}></div>
     </>
   );
 };
