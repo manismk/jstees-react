@@ -71,7 +71,26 @@ const AddressProvider = ({ children }) => {
         toast.success("Address added successfully");
       } else throw new Error("Unhandled request code in add address");
     } catch (e) {
-      console.error("Error in Adding item in cart", e);
+      console.error("Error in Adding address", e);
+      toast.error("Something Went wrong", { autoClose: false });
+    }
+  };
+
+  const deleteAddress = async (addressId) => {
+    try {
+      const { status, data } = await axios.delete(
+        `/api/user/address/${addressId}`,
+        {
+          headers: { authorization: localStorage.getItem("token") },
+        }
+      );
+
+      if (status === 200) {
+        setUserAddress(data.address);
+        toast.error("Address deleted");
+      } else throw new Error("Unhandled request code in delete address");
+    } catch (e) {
+      console.error("Error in Deleting address", e);
       toast.error("Something Went wrong", { autoClose: false });
     }
   };
@@ -85,6 +104,7 @@ const AddressProvider = ({ children }) => {
         openModal,
         closeModal,
         addAddress,
+        deleteAddress,
       }}
     >
       {children}

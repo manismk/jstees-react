@@ -190,7 +190,7 @@ export const AddressModal = () => {
               mobileError: "",
             }));
           }}
-          type="text"
+          type="number"
           value={addressData.mobile}
         />
         <div className="text--center">
