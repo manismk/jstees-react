@@ -21,7 +21,7 @@ export const AddressModal = () => {
     mobile: "",
     mobileError: "",
   });
-  const { closeModal } = useAddress();
+  const { closeModal, addAddress } = useAddress();
 
   const clickHandler = () => {
     const {
@@ -52,6 +52,26 @@ export const AddressModal = () => {
       zipcodeError,
       mobileError,
     }));
+    if (
+      nameError === "" &&
+      stateError === "" &&
+      countryError === "" &&
+      cityError === "" &&
+      streetError === "" &&
+      zipcodeError === "" &&
+      mobileError === ""
+    ) {
+      addAddress({
+        name: addressData.name,
+        street: addressData.street,
+        city: addressData.city,
+        state: addressData.state,
+        country: addressData.country,
+        zipcode: addressData.zipcode,
+        mobile: addressData.mobile,
+      });
+      closeModal();
+    }
   };
   return (
     <>

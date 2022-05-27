@@ -6,7 +6,9 @@ export const AddressContainer = () => {
   return (
     <div className="address--wrapper">
       {userAddress.length > 0 ? (
-        userAddress.map((address) => <AddressItem address={address} />)
+        userAddress.map((address) => (
+          <AddressItem address={address} key={address._id} />
+        ))
       ) : (
         <p className="text--center m-v-1">No Saved address Found</p>
       )}

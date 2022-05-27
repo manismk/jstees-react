@@ -11,7 +11,7 @@ export const AddressItem = ({ address }) => {
       </div>
       <p className="text--bold">{address.name}</p>
       <p>{address.street}</p>
-      <p>{`${address.city}, ${address.state}, ${address.country} - ${address.pincode}`}</p>
+      <p>{`${address.city}, ${address.state}, ${address.country} - ${address.zipcode}`}</p>
       <p>{`Phone - ${address.mobile}`}</p>
     </div>
   );
