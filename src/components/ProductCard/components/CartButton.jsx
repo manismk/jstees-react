@@ -33,7 +33,7 @@ export const CartButton = ({ product }) => {
             ? (setButtonText("Adding"), handleCartAddition(product))
             : navigate("/cart");
         } else {
-          navigate("/login");
+          navigate("/login", { replace: true });
         }
       }}
     >

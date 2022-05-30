@@ -16,7 +16,7 @@ export const WishListButton = ({ product }) => {
         e.stopPropagation();
         authData.isLoggedIn
           ? (setDisabled((prev) => !prev), handleAddWishlist(product))
-          : navigate("/login");
+          : navigate("/login", { replace: true });
       }}
     >
       <i className="fas fa-heart" aria-hidden="true"></i>
