@@ -27,12 +27,6 @@ export const Profile = () => {
           >
             Address
           </button>
-          <button
-            className={`tab--button ${showingTab === "order" ? "active" : ""}`}
-            onClick={() => setShowingTab("order")}
-          >
-            Orders
-          </button>
         </div>
         {showingTab === "profile" && <ProfileContainer />}
         {showingTab === "address" && <AddressContainer />}

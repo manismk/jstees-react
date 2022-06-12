@@ -226,6 +226,25 @@ export const AddressModal = () => {
           value={addressData.mobile}
         />
         <div className="text--center">
+          {!addressModal.isFromEdit && (
+            <button
+              className="btn btn--primary m-r-1"
+              onClick={() =>
+                setAddressData((prev) => ({
+                  ...prev,
+                  name: "Manikandan S",
+                  street: "50/64, S.R. street",
+                  city: "Chennai",
+                  zipcode: "600028",
+                  state: "Tamil Nadu",
+                  country: "India",
+                  mobile: "9876543210",
+                }))
+              }
+            >
+              Fill with dummy data
+            </button>
+          )}
           <button className="btn btn--primary" onClick={clickHandler}>
             {`${addressModal.isFromEdit ? "Update" : "Add"}`} Address
           </button>
