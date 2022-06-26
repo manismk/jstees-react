@@ -9,7 +9,7 @@ import { CartCard } from "./components/CartCard";
 
 export const Cart = () => {
   const { cartList, setCartData, cartData } = useCart();
-  const { actualAmount, discountAmount } = calculateCartValue();
+  const { actualAmount, discountAmount } = calculateCartValue(cartList);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 

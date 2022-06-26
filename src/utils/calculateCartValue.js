@@ -1,8 +1,4 @@
-import { useCart } from "../context";
-
-export const calculateCartValue = () => {
-  const { cartList } = useCart();
-
+export const calculateCartValue = (cartList) => {
   return cartList.reduce(
     (acc, curr) => {
       return {
