@@ -109,3 +109,10 @@ test("Should return the products with price high low", () => {
   const result = getSortedData(data, "lowtohigh");
   expect(result).toStrictEqual(expectedResult);
 });
+
+test("Should return all the product when string doesn't match", () => {
+  const expectedResult = [...data];
+
+  const result = getSortedData(data, "");
+  expect(result).toStrictEqual(expectedResult);
+});
