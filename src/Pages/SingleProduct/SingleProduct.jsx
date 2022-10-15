@@ -44,7 +44,7 @@ export const SingleProduct = () => {
     <>
       <main>
         {data.product === null ? (
-          "Error"
+          <></>
         ) : (
           <section className="container grid grid--2--cols single--prod--container">
             <div className="product--image--container card--badge">

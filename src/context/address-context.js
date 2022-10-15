@@ -28,9 +28,7 @@ const AddressProvider = ({ children }) => {
             "Error in Getting address data while the user changes",
             e
           );
-          toast.error("User not found.Try logging in again", {
-            autoClose: false,
-          });
+          toast.error("User not found.Try logging in again");
         }
       })();
     } else {
@@ -72,7 +70,7 @@ const AddressProvider = ({ children }) => {
       } else throw new Error("Unhandled request code in add address");
     } catch (e) {
       console.error("Error in Adding address", e);
-      toast.error("Something Went wrong", { autoClose: false });
+      toast.error("Something Went wrong");
     }
   };
 
@@ -91,7 +89,7 @@ const AddressProvider = ({ children }) => {
       } else throw new Error("Unhandled request code in delete address");
     } catch (e) {
       console.error("Error in Deleting address", e);
-      toast.error("Something Went wrong", { autoClose: false });
+      toast.error("Something Went wrong");
     }
   };
   const updateAddress = async (addressId, address) => {
@@ -112,7 +110,7 @@ const AddressProvider = ({ children }) => {
       } else throw new Error("Unhandled request code in delete address");
     } catch (e) {
       console.error("Error in Updating address", e);
-      toast.error("Something Went wrong", { autoClose: false });
+      toast.error("Something Went wrong");
     }
   };
 

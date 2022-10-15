@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const SearchItem = ({ item, closeSearch }) => {
   return (
     <Link
-      to={`/products/single/${item._id}`}
+      to={`/products/single/${item.id}`}
       onClick={closeSearch}
       className="search--item"
     >

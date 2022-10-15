@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
         console.log("Error in Login", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };
@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
       } catch (e) {
         setAuthData((prev) => ({ ...prev, isLoggedIn: false }));
         console.log("Error in signup", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };

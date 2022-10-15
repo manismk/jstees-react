@@ -30,9 +30,7 @@ const CartProvider = ({ children }) => {
         } catch (e) {
           setCartList([]);
           console.error("Error in Getting Cart data while the user changes", e);
-          toast.error("User not found.Try logging in again", {
-            autoClose: false,
-          });
+          toast.error("User not found.Try logging in again");
         }
       })();
     } else {
@@ -60,7 +58,7 @@ const CartProvider = ({ children }) => {
         }
       } catch (e) {
         console.error("Error in Adding item in cart", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };
@@ -81,7 +79,7 @@ const CartProvider = ({ children }) => {
         }
       } catch (e) {
         console.error("Error in Deleting cart Item", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };

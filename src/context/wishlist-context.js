@@ -22,9 +22,7 @@ const WishlistProvider = ({ children }) => {
         } catch (e) {
           setWishlist([]);
           console.error("Error in Getting Wishlist", e);
-          toast.error("User not found. Try logging in again", {
-            autoClose: false,
-          });
+          toast.error("User not found. Try logging in again");
         }
       })();
     } else {
@@ -52,7 +50,7 @@ const WishlistProvider = ({ children }) => {
         }
       } catch (e) {
         console.error("Error in Adding wishlist", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };
@@ -71,7 +69,7 @@ const WishlistProvider = ({ children }) => {
         }
       } catch (e) {
         console.error("Error in Deleting wishlist", e);
-        toast.error("Something Went wrong", { autoClose: false });
+        toast.error("Something Went wrong");
       }
     })();
   };

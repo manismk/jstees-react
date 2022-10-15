@@ -7,11 +7,11 @@ export const getSingleProduct = async (productId) => {
     if (status === 200 && data.product !== null) {
       return data.product;
     } else {
-      toast.error("Something Went wrong", { autoClose: false });
+      toast.error("Something Went wrong");
       return null;
     }
   } catch (e) {
-    toast.error("Something Went wrong", { autoClose: false });
+    toast.error("Something Went wrong");
     console.log("Error in getting single Product", e);
     return null;
   }
