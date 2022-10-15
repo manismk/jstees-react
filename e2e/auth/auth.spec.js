@@ -1,4 +1,3 @@
-// @ts-check
 import { test, expect } from "@playwright/test";
 import { User } from "../utils/helpers";
 
