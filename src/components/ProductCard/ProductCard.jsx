@@ -20,7 +20,7 @@ export const ProductCard = ({ product, wishListed }) => {
       <div
         className="card card--badge"
         onClick={() => {
-          navigate(`/products/single/${product._id}`);
+          navigate(`/products/single/${product.id}`);
         }}
       >
         {wishListed ? (
